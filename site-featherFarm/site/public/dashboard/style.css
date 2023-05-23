@@ -1,0 +1,470 @@
+*{
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+main{
+    width: 100vw;
+    min-height: 100vh;
+    max-height:auto;
+    background-color: #fffbea;
+    display: flex;
+    /* background-color: aqua; */
+    background-image: url(../assets/assetsDashboard/fundoDash.svg);
+    background-repeat: no-repeat;
+    background-position: 30vh 33vw;
+}
+
+#menuEsquerda{
+    z-index: 2;
+    width: 18vw;
+    height: 100vh;
+    background-color: #fafafa;
+    /* background-color: aqua; */
+    box-shadow: 10px 3px 21px rgba(92, 92, 92, 0.705);
+    position: fixed;
+}
+#menuEsquerda #topoMenuEsquerda{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    border-bottom: 1px solid #5BB54C;
+    padding-top: 5%;
+}
+#menuEsquerda #topoMenuEsquerda img{
+    width: 50%;
+    height: 50%;
+    margin-bottom: 10px;
+}
+#menuEsquerda #topoMenuEsquerda p{
+    margin: 5px 0;
+    font-size: 19px;
+    color: #E37F2A;
+    text-decoration: underline;
+}
+#menuEsquerda #topoMenuEsquerda p:last-child{
+    color: #944907;
+}
+#menuEsquerda #topoMenuEsquerda div{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: flex-start;
+}
+#menuEsquerda #topoMenuEsquerda div img{
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+}
+
+#menuEsquerda #opcoesMenu{
+    width: 100%;
+    height: 65vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: aqua; */
+}
+#menuEsquerda #opcoesMenu ul{
+    list-style: none;
+    padding: 0%;
+}
+#menuEsquerda #opcoesMenu li{
+    margin: 4vh 0;
+    height: max-content;
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+    color: #E37F2A;
+
+}
+
+
+#menuEsquerda #opcoesMenu button{
+    width: 12vw;
+    height: 9vh;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    color: #E37F2A;
+}
+#menuEsquerda #opcoesMenu button #graficIcon{
+    width: 30%;
+    height: 85%;
+    margin-right: 0.8vw;
+}
+
+#menuEsquerda #opcoesMenu button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+
+    color: #5BB54C;
+    transition: all 0.6s;
+}
+#menuEsquerda #opcoesMenu button img{
+    width: 35%;
+    height: 90%;
+}
+
+
+/* estilo dos dashboards */
+
+#graficos{
+    width: 78vw;
+    height: auto;
+    /* display: flex; */
+    /* align-items:center; */
+    /* flex-direction: column; */
+    padding: 2%;
+    position: absolute;
+    left: 18vw;
+
+}
+
+#graficos #filtro{
+    background-color: #FFE581;
+    position: relative;
+    width: 60vw;
+    height: 7vh;
+    border-radius: 10px;
+    display: flex ;
+    padding: 0 3%;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    box-shadow: 5px 5px 10px #5e5e5e;
+}
+#graficos #filtro h3{
+    color: #135E06;
+}
+#graficos #filtro img{
+    width: 3vw;
+    height: 6vh;
+}
+#graficos #referencia{
+    width: 30%;
+    position: relative;
+    /* background-color: #5BB54C; */
+    display: flex ;
+    justify-content: space-around;
+    margin: 2vh  auto;
+
+}
+.verde{
+    color: #135E06;
+}
+.laranja{
+    color: #FF7500;
+}
+#graficos #referencia p{
+    font-size: 22px;
+}
+#graficos #areaRelatorio #graficoRelatorioGeral{
+    /* background-color: #5BB54C; */
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+#graficos #areaRelatorio .graficoRelatorio{
+    width: 39vw;
+    height: 40vh;
+    padding: 2% 3%;
+    background-color: #fffff5;
+    /* border: #FF7500 1px solid; */
+    box-shadow: #072c00 10px 7px 10px;
+    rotate:(10deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    margin-bottom: 2%;
+}
+#graficos #areaRelatorio #graficoRelatorio1 h4{
+    font-weight: 550;
+}
+#graficos #areaRelatorio #graficoRelatorioGeral #picos{
+    width: 18vw;
+    height: 14vh;
+    background-color: #5bc8483a;
+    /* border: #135E06 1px solid; */
+    box-shadow: #3b2700 -10px 7px 10px;
+    rotate:(10deg);
+    border-radius: 105px;
+    padding: 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around   ;
+    flex-direction: column;
+}
+#graficos #areaRelatorio #graficoRelatorioGeral #picos h4{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    /* background-color: #E37F2A; */
+}
+#graficos #areaRelatorio #graficoRelatorioGeral #media{
+    width: fit-content  ;
+    height: 32vh;
+    background-color: #5bc8483a;
+    /* border: #135E06 1px solid; */
+    box-shadow: #3b2700 -10px 7px 10px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-around;
+    padding: 1.8%;
+      
+      
+}
+#graficos #areaRelatorio #graficoRelatorioGeral #media div{
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    align-items: center;
+    justify-content: start;
+}
+#graficos #areaRelatorio #graficoRelatorioGeral #media div:last-child{
+    align-items: center;;
+    justify-content: flex-end;
+}
+#graficos #areaRelatorio #graficoRelatorioGeral #media img{
+    width: 17vw;
+    height: 16vh;
+}
+#graficos #areaTemperatura{
+    /* background-color: #5BB54C; */
+    width: 90%;
+    margin: auto;
+    height: auto;
+}
+#graficos #areaTemperatura #graficoTemperatura{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+
+}
+#graficos #areaTemperatura #graficoTemperatura div:last-child{
+    width: 40%;
+    height: 70vh;
+    /* background-color: #000000; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+#graficos #areaTemperatura #graficoTemperatura #tempIndicador{
+    background-color: #f1ffe1ec;
+    /* border: #E37F2A solid 1px; */
+    box-shadow: #3b2700 -10px 7px 10px;
+    border-radius: 15px;
+    padding: 5%;
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+}
+#graficos #areaTemperatura #graficoTemperatura div:last-child div{
+    height: 50%;
+    /* background: #5BB54C; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: #222222;
+    width: 13vw;
+}
+#graficos #areaTemperatura #graficoTemperatura div:last-child div h4{
+    width: 90%;
+}
+#graficos #areaTemperatura #graficoTemperatura div:last-child img{
+    width: 7vw;
+    height: 13vw;
+    /* background-color: #944907; */
+}
+#graficoLinhaTemp{
+    background-color: #f1ffe1c7;
+    padding: 4%;
+    /* border: 1px solid #E37F2A; */
+    box-shadow: #3b2700 -10px 7px 25px;
+
+    border-radius: 15px;
+}
+
+
+
+#graficos #areaUmidade{
+    /* background-color: #5BB54C; */
+    width: 90%;
+    margin: auto;
+    height: auto;
+}
+#graficos #areaUmidade #graficoUmidade{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+#graficos #areaUmidade #graficoUmidade div:last-child{
+    width: 40%;
+    height: 70vh;
+    /* background-color: #000000; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#graficos #areaUmidade #graficoUmidade #umidadeIndicador{
+    background-color: #ffffffd0;
+    /* border: #E37F2A solid 1px; */
+    box-shadow: #072c00 10px 7px 10px;
+
+    border-radius: 15px;
+    padding: 5%;
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+}
+#graficos #areaUmidade #graficoUmidade div:last-child div{
+    height: 55%;
+    /* background: #5BB54C; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: #222222;
+    width: 13vw;
+    padding: 2%;
+}
+#graficos #areaUmidade #graficoUmidade div:last-child div h4{
+    width: 85%;
+}
+#graficos #areaUmidade #graficoUmidade div:last-child img{
+    width: 5vw;
+    height: 6vw;
+    /* background-color: #944907; */
+}
+#graficoBarraUmidade{
+    background-color: #ffffffd0;
+    padding: 4%;
+    /* border: 1px solid #E37F2A; */
+    box-shadow: #072c00 -10px 7px 10px;
+    border-radius: 15px;
+}
+
+/*  */
+.fade {
+    animation: fade 1s;
+  }
+  
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* area de suporte */
+
+  #areaSuporte .faq-container {
+    width: 80%;
+
+    margin: 0 auto;
+  }
+  
+  #areaSuporte .question {
+    background-color: #f1f1f1;
+    margin-bottom: 3vh;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fffbea;
+    border: #135E06 solid 2px;
+    border-radius: 15px;
+  }
+ 
+  
+  #areaSuporte .answer {
+    display: none;
+  }
+  #areaSuporte .answer p{
+    font-size: 15px;
+    color: #252525;
+  }
+  
+  #areaSuporte .answer.show {
+    display: block;
+  }
+
+  #areaSuporte h1{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+  }
+  #areaSuporte #conteudoSuporte #esquerdaSuporte{
+    /* background-color: #697467;  */
+    width: 50%;
+    margin: 3vh auto;
+  }
+  #areaSuporte #conteudoSuporte #esquerdaSuporte #duvidas{
+    font-weight: 500;
+    text-align: center;
+    margin: 1vh auto;
+}
+#areaSuporte .question h2{
+    font-size: 18px;
+    color: #E37F2A;
+    text-align: left;
+    font-weight: 500;
+    margin: 1vh auto;
+}
+#conteudoSuporte{
+    display: flex;
+}
+#areaSuporte #contato{
+    width: 40vw;
+    height: auto;
+    margin: 3vh auto;
+}
+#areaSuporte #contato h1{
+    color: #BF5D0A;
+    margin: 1vh auto;
+    font-size: 24px;
+}
+#areaSuporte #contato h2{
+    font-weight: 300;
+    text-align: center;
+    font-size: 19px;
+    margin: 3vh auto;
+}
+#areaSuporte #contato div{
+    width: 50%;
+    margin: auto;
+    /* background-color: #135E06; */
+}
+#areaSuporte #contato div button{
+    width: 100%;
+    height: 4rem;
+    border: #072c00 solid 2px;
+    border-radius: 15px;
+    background-color: #fffbea;
+    cursor: pointer;
+    margin-top: 8vh;
+    font-size: 25px;
+    transition: background-color 0.3s ease;
+
+}
+
+#areaSuporte #contato div button:hover {
+    background-color: #E37F2A;
+    border: #E37F2A solid 2px;
+    color: #fafafa;
+
+    transform: scale(1.1);
+    transition: all 0.8s;
+  }

@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;900&display=swap');
+
+@font-face {
+    font-family: Poppins;
+    src: url(../assets/assetsIndex/Poppins-Regular.ttf);
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header {
+    width: 100%;
+    margin-top: -1%;
+    height: 170px;
+    background-image: url('../assets/assetsSimulador/header.png');
+    background-size: 120% 100%;
+    background-color: #FFFBEA;
+    display: flex;
+    background-repeat: no-repeat;
+    justify-content: space-evenly;
+    padding-top: 50px;
+    background-position: center top;
+    text-align: center;
+    z-index: 100;
+}
+
+
+.menu1 {
+    margin-right: -130px;
+    margin-left: -50px;
+    height: fit-content;
+    
+}
+
+.menu2 {
+    margin-right: -50px;
+    height: fit-content;
+
+}
+
+
+.menu1 li {
+    display: inline-block;
+    
+}
+
+.menu1 li a {
+    margin: 0 10px;
+    font-size: 26px;
+    text-decoration: none;
+    color: #E37F2A;
+    font-family: 'Poppins';
+}
+
+.menu2 li {
+    display: inline-block;
+}
+
+.menu2 li a {
+    margin: 0 10px;
+    font-size: 24px;
+    text-decoration: none;
+    color: #FFDD57;
+    font-family: 'Poppins';
+    background-color: #E37F2A;
+    padding: 5px 50px;
+    border-radius: 40px;
+    box-shadow: 3px 4px 4px rgba(81, 81, 81, 0.47);
+    transition: 0.2s;
+    text-shadow: 0px 4px 4px #914c11;
+
+}
+
+.menu2 li a:hover {
+    background-color: #e7a036;
+    color: #FFDD57;
+    
+}
+main{
+    width: 98.7vw;
+    height: auto;
+    margin: auto;
+    display: flex;
+    background-color: #FFFBEA;
+
+}
+main article:first-child{
+    width: 40%;
+    /* background-color: #9cbd97; */
+}
+main article form{
+    /* background-color: aqua; */
+    width: 85%;
+    padding: 1% 2% 0% 7%;
+    margin-left: -1vw;
+    height: 70vh;
+    margin-top: -1vh;
+    border-radius: 0  35px 35px 0;
+    box-shadow: 5px 5px 25px;
+    /* background-color: rgba(57, 132, 44, 0.4); */
+    background: linear-gradient(180deg, rgba(255,221,87,0.51) 6%, rgba(57,132,44,0.4) 41%);
+
+
+}
+main form input, main form select{
+    margin: 2% auto;
+    width: 65%;
+    height: 2rem;
+    border: 1px solid #E37F2A;
+    border-radius: 0.8rem;
+    outline: none;
+    background-color: transparent;
+    padding-left: 3%;
+    color: #444;
+}
+.titulo{
+    color: #135e06;
+    text-align: center;
+    background-color: transparent;
+    margin: 5vh auto;
+}
+h3{
+    color: #2b721f;
+    background-color: transparent;
+}
+main form button{
+    padding: 0.75rem;
+    width: 8rem;
+    height: 3.2rem;
+    display: block;
+    text-decoration: none;
+    background-color: #E37F2A;
+    border: #135e06 solid 1px;
+    color: #f2f2f2;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 6px 6px 23px -3px #00000088;
+}
+main #respostas{
+    width: 45%;
+    margin: 0 auto;
+    /* background-color: yellow; */
+}
+main #respostas #exibir_infos{
+    width: 98%;
+    margin: auto;
+    height: fit-content;
+    /* z-index: 100; */
+    /* background-color: #586e54; */
+    padding: 1% 0%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+main #respostas #exibir_infos h2{
+    color: #444;
+}
+main #respostas #exibir_infos h1{
+    color: #135e06;
+    width: auto;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 27px;
+    /* background-color: #8f8f8f; */
+}
+
+main #respostas #exibir_infos #spam1{
+    color: #ff3434;
+    font-size: 20px;
+    font-weight: 600;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+main #respostas #exibir_infos #spam2{
+    color: #b6aa00;
+    font-size: 20px;
+    font-weight: 600;
+    width: 98%;
+    margin: 0 auto;
+    margin-left: 3%;
+    /* background-color: #135e06; */
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+main #respostas #exibir_infos #spam3{
+    color: #135e06;
+    font-size: 20px;
+    font-weight: 600;
+    width: 98%;
+    margin: 0 auto;
+    margin-left: 3%;
+    /* background-color: #135e06; */
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}

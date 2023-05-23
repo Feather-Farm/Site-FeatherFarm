@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="../assets/assetsIndex/logo.png" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="./style.css" />
+  <title>Implementando o chart.js</title>
+</head>
+
+<body>
+  <main>
+    <article id="menuEsquerda">
+      <section id="topoMenuEsquerda">
+        <img src="../assets/assetsDashboard/logo.png" alt="" />
+        <p id="nomeUsuario" name="nomeUsuario">Sadia</p>
+        <p id="nomeUsuario" name="nomeUsuario">Roberto Justos</p>
+        <div>
+          <a href="../index.html"><img src="../assets/assetsDashboard/SignOut.png" alt="" /></a>
+        </div>
+        <!-- <p id="nomeUsuario" name="nomeUsuario">Analista de Dados</p> -->
+      </section>
+      <section id="opcoesMenu">
+        <ul>
+          <button id="relatorio">
+            <img src="../assets/assetsDashboard/graficIcon.png" id="graficIcon" alt="" /> Relatório
+          </button>
+          <button id="temperatura">
+            <img src="../assets/assetsDashboard/termometro.png" alt="" /> Temperatura
+          </button>
+          <button id="umidade">
+            <img src="../assets/assetsDashboard/umidade.png" alt="" /> Umidade
+          </button>
+          <button id="suporte">
+            <img src="../assets/assetsDashboard/supIcon.png" id="supIcon" alt="" /> Suporte
+          </button>
+        </ul>
+      </section>
+    </article>
+    <article id="graficos">
+      <div id="filtro">
+        <h3>Filtrar:</h3>
+        <div style="display: flex;
+          align-items: center;">
+          <select name="" id="" style="width: fit-content; background-color: transparent;">
+            <option value=""></option>
+            <option value="">Galpão 1</option>
+            <option value="">Galpão 2</option>
+            <option value="">Galpão 3</option>
+          </select>
+          <img src="../assets/assetsDashboard/Filter.png" alt="" />
+        </div>
+      </div>
+      <div id="referencia">
+        <p>Empresa:</p>
+        <p class="verde" id="nomeEmpresa">Sadia -</p>
+        <p>Galpão</p>
+        <p class="verde" id="numGalpao">1</p>
+      </div>
+      <section id="areaRelatorio">
+        <article id="graficoRelatorioGeral">
+          <section class="graficoRelatorio">
+            <h5 class="laranja">
+              Gráfico em barras de temperatura e umidade - dia 05/05
+            </h5>
+            <div style="position: relative; height: 34vh; width: 34vw; margin-top: 2vh;">
+              <canvas id="myChartLine"></canvas>
+            </div>
+          </section>
+          <section id="picos">
+            <h4>
+              Pico de temperatura:
+              <p class="verde" id="picoTemperatura">15:00h</p>
+            </h4>
+            <h4>
+              Pico de Umidade:
+              <p class="verde" id="picoUmidade">17:00h</p>
+            </h4>
+          </section>
+        </article>
+      </section>
+
+      <section id="areaTemperatura" style="display: none">
+        <article id="graficoTemperatura">
+          <div id="graficoLinhaTemp" style="position: relative; height: 40vh; width: 40vw">
+            <h4>Média de temperatura nos últimos 7 dias</h4>
+
+            <canvas id="myChartLineTemp"></canvas>
+          </div>
+          <div>
+            <section id="tempIndicador">
+              <div>
+                <h4>4% mais quente que na semana anterior</h4>
+              </div>
+              <img src="../assets/assetsDashboard/termometroIndicador.png" alt="" />
+            </section>
+          </div>
+        </article>
+      </section>
+
+      <section id="areaUmidade" style="display: none">
+        <article id="graficoUmidade">
+          <div id="graficoBarraUmidade" style="position: relative; height: 45vh; width: 45vw">
+            <h4>Média de Umidade nos últimos 7 dias</h4>
+
+            <canvas id="myChartUmidade"></canvas>
+          </div>
+          <div>
+            <section id="umidadeIndicador">
+              <div>
+                <h4>6% mais úmido que na semana anterior</h4>
+              </div>
+              <img src="../assets/assetsDashboard/Vector.svg" alt="" />
+            </section>
+          </div>
+        </article>
+      </section>
+
+      <section id="areaSuporte" style="display: none">
+        <h1>Precisa de <span class="laranja">Ajuda?</span></h1>
+
+        <article id="conteudoSuporte">
+
+          <article id="esquerdaSuporte">
+            <h2 id="duvidas">Dúvidas <span class="verde">frequentes</span></h2>
+
+            <div class="faq-container">
+              <div class="question"> <!-- Pergunta 1 -->
+                <h2>Como faço para criar uma página HTML?</h2>
+                <div class="answer">
+                  <p>Para criar uma página HTML, você precisa criar um arquivo com a extensão .html e escrever o código
+                    HTML nele.</p>
+                </div>
+              </div>
+
+              <div class="question"> <!-- Pergunta 2 -->
+                <h2>O que é CSS?</h2>
+                <div class="answer">
+                  <p>CSS (Cascading Style Sheets) é uma linguagem de estilo usada para descrever a aparência e
+                    formatação de um documento HTML.</p>
+                </div>
+              </div>
+
+              <div class="question"> <!-- Pergunta 3 -->
+                <h2>O que é EJS?</h2>
+                <div class="answer">
+                  <p>EJS (Embedded JavaScript) é uma linguagem de modelagem que permite inserir código JavaScript em
+                    páginas HTML.</p>
+                </div>
+              </div>
+
+              <div class="question"> <!-- Pergunta 4 -->
+                <h2>Como posso aplicar estilos CSS em um elemento HTML?</h2>
+                <div class="answer">
+                  <p>Você pode aplicar estilos CSS em um elemento HTML usando seletores CSS e definindo propriedades de
+                    estilo, como cor, tamanho da fonte, margens, etc.</p>
+                </div>
+              </div>
+
+              <div class="question"> <!-- Pergunta 5 -->
+                <h2>Como passar dados para um arquivo EJS?</h2>
+                <div class="answer">
+                  <p>Você pode passar dados para um arquivo EJS usando variáveis no lado do servidor e incorporando
+                    essas variáveis no código EJS.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article id="contato">
+            <h1>Ainda não solucionou sua dúvida?</h1>
+            <h2 class="laranja">Fale Conosco!</h2>
+
+            <div>
+              <button onclick="window.location.href = '#' ">Entrar em contato</button>
+            </div>
+          </article>
+
+        </article>
+      </section>
+    </article>
+  </main>
+</body>
+<script>
+
+  //
+  //charts js
+  // const ctxUmidade = document.getElementById("myChartUmidade");
+  // const ctxLine = document.getElementById("myChartLine");
+  // const ctxLineTemp = document.getElementById("myChartLineTemp");
+
+
+  // new Chart(ctxUmidade, {
+  //   type: "line",
+  //   data: {
+  //     labels: ["dom", "seg", "ter", "qua", "qui", "sex", "sab"],
+  //     datasets: [
+
+  //       {
+  //         label: "Umidade",
+  //         data: [60, 62, 60, 65, 68, 70, 70],
+  //         backgroundColor: "#39842C",
+  //         borderWidth: 1,
+  //       },
+  //     ],
+  //   },
+  //   options: {
+  //     scales: {
+  //       y: {
+  //         beginAtZero: true,
+  //       },
+  //     },
+  //   },
+  // });
+
+  // // grafico em linhas começo
+  // new Chart(ctxLine, {
+  //   type: "line",
+  //   data: {
+  //     labels: ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"],
+  //     datasets: [
+  //       {
+  //         label: "Temperatura",
+  //         data: [22, 24, 27, 23, 20, 18,],
+  //         backgroundColor: "#E37F2A",
+  //         borderColor: "#E37F2f",
+  //         borderWidth: 1,
+  //       },
+  //       {
+  //         label: "Umidade",
+  //         data: [90, 89, 93, 87, 88, 82],
+  //         backgroundColor: "#39842C",
+  //         borderColor: "#39842f",
+  //         borderWidth: 1,
+  //       },
+  //     ],
+  //   },
+  //   options: {
+  //     scales: {
+  //       y: {
+  //         beginAtZero: true,
+  //       },
+  //     },
+  //   },
+  // });
+
+  // new Chart(ctxLineTemp, {
+  //   type: "line",
+  //   data: {
+  //     labels: ["dom", "seg", "ter", "qua", "qui", "sex", "sab"],
+  //     datasets: [
+  //       {
+  //         label: "Temperatura",
+  //         data: [22, 22, 23, 23, 24, 22, 20],
+  //         backgroundColor: "#E37F2A",
+  //         borderColor: "#E37F2f",
+  //         borderWidth: 1,
+  //       },
+  //     ],
+  //   },
+  //   options: {
+  //     scales: {
+  //       y: {
+  //         beginAtZero: true,
+  //       },
+  //     },
+  //   },
+  // });
+
+  // area de suporte
+
+
+
+
+  //
+
+  // comandos para trocar os graficos ao clicar nos botoes laterais
+
+  // Selecionar os botões e os painéis de dashboard
+  var relatorio = document.getElementById("relatorio");
+  var temperatura = document.getElementById("temperatura");
+  var umidade = document.getElementById("umidade");
+  var suporte = document.getElementById("suporte");
+
+  var areaRelatorio = document.getElementById("areaRelatorio");
+  var areaTemperatura = document.getElementById("areaTemperatura");
+  var areaUmidade = document.getElementById("areaUmidade");
+  var areaSuporte = document.getElementById("areaSuporte");
+
+  // Adicionar um evento de clique a cada botão
+  relatorio.addEventListener("click", function () {
+    areaRelatorio.style.display = "block";
+    areaTemperatura.style.display = "none";
+    areaUmidade.style.display = "none";
+    areaSuporte.style.display = "none";
+    filtro.style.zIndex = '10';
+    referencia.style.zIndex = '10';
+    filtro.style.position = 'relative';
+    referencia.style.position = 'relative';
+
+    areaTemperatura.classList.remove("fade");
+    areaUmidade.classList.remove("fade");
+    areaSuporte.classList.remove("fade");
+    areaRelatorio.classList.add("fade");
+  });
+
+  temperatura.addEventListener("click", function () {
+    areaRelatorio.style.display = "none";
+    areaTemperatura.style.display = "block";
+    areaUmidade.style.display = "none";
+    areaSuporte.style.display = "none";
+    filtro.style.zIndex = '10';
+    referencia.style.zIndex = '10';
+    filtro.style.position = 'relative';
+    referencia.style.position = 'relative';
+
+    areaRelatorio.classList.remove("fade");
+    areaUmidade.classList.remove("fade");
+    areaSuporte.classList.remove("fade");
+    areaTemperatura.classList.add("fade");
+  });
+
+  umidade.addEventListener("click", function () {
+    areaRelatorio.style.display = "none";
+    areaTemperatura.style.display = "none";
+    areaSuporte.style.display = "none";
+    areaUmidade.style.display = "block";
+    filtro.style.zIndex = '10';
+    referencia.style.zIndex = '10';
+    filtro.style.position = 'relative';
+    referencia.style.position = 'relative';
+
+    areaRelatorio.classList.remove("fade");
+    areaTemperatura.classList.remove("fade");
+    areaSuporte.classList.remove("fade");
+    areaUmidade.classList.add("fade");
+  });
+
+  suporte.addEventListener("click", function () {
+
+    var filtro = document.getElementById('filtro');
+    var referencia = document.getElementById('referencia');
+
+    areaRelatorio.style.display = "none";
+    areaTemperatura.style.display = "none";
+    areaUmidade.style.display = "none";
+    areaSuporte.style.display = "block";
+    filtro.style.zIndex = '-10';
+    referencia.style.zIndex = '-10';
+    filtro.style.position = 'absolute';
+    referencia.style.position = 'absolute';
+
+    areaRelatorio.classList.remove("fade");
+    areaTemperatura.classList.remove("fade");
+    areaUmidade.classList.remove("fade");
+    areaSuporte.classList.add("fade");
+  });
+
+  // area do faq
+  const questions = document.querySelectorAll('.question');
+
+  questions.forEach(question => {
+    question.addEventListener('click', () => {
+      question.querySelector('.answer').classList.toggle('show');
+    });
+  });
+  //
+
+  // graficos em chart js
+
+  let proximaAtualizacao;
+
+  window.onload = obterDadosGraficos();
+
+  function obterDadosGraficos() {
+    obterDadosGrafico(1)
+  }
+
+  // verificar_autenticacao();
+
+  function alterarTitulo(idSensor) {
+    var tituloAquario = document.getElementById(`tituloAquario${idSensor}`)
+    myChartLine.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " + idSensor + "</span>"
+  }
+
+  function exibirAquario(idSensor) {
+    let todosOsGraficos = document.getElementById("graficos")
+
+    for (i = 1; i <= todosOsGraficos.childElementCount; i++) {
+      // exibindo - ou não - o gráfico
+      let elementoAtual = document.getElementById(`grafico${i}`)
+      if (elementoAtual.classList.contains("display-block")) {
+        elementoAtual.classList.remove("display-block")
+      }
+      elementoAtual.classList.add("display-none")
+
+      // alterando estilo do botão
+      let btnAtual = document.getElementById(`btnAquario${i}`)
+      if (btnAtual.classList.contains("btn-pink")) {
+        btnAtual.classList.remove("btn-pink")
+      }
+      btnAtual.classList.add("btn-white")
+    }
+
+    // exibindo - ou não - o gráfico
+    let graficoExibir = document.getElementById(`grafico${idSensor}`)
+    graficoExibir.classList.remove("display-none")
+    graficoExibir.classList.add("display-block")
+
+    // alterando estilo do botão
+    let btnExibir = document.getElementById(`btnAquario${idSensor}`)
+    btnExibir.classList.remove("btn-white")
+    btnExibir.classList.add("btn-pink")
+  }
+
+  // O gráfico é construído com três funções:
+  // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+  // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
+  // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
+
+  // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+  // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
+  // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
+
+  //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+  //     Para ajustar o "select", ajuste o comando sql em src/models
+  function obterDadosGrafico(idSensor) {
+
+    alterarTitulo(idSensor)
+
+    if (proximaAtualizacao != undefined) {
+      clearTimeout(proximaAtualizacao);
+    }
+
+    fetch(`/medidas/ultimas/${idSensor}`, { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+          resposta.reverse();
+
+          plotarGrafico(resposta, idSensor);
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    })
+      .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
+  }
+
+  // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+  // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+  // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+  function plotarGrafico(resposta, idSensor) {
+
+    console.log('iniciando plotagem do gráfico...');
+
+    // Criando estrutura para plotar gráfico - labels
+    let labels = [];
+
+    // Criando estrutura para plotar gráfico - dados
+    let dados = {
+      labels: labels,
+      datasets: [{
+        label: 'Umidade',
+        data: [],
+        fill: false,
+        backgroundColor: "#39842C",
+        borderColor: "#39842C",
+        tension: 0.1
+      },
+      {
+        label: 'Temperatura',
+        data: [],
+        fill: false,
+        backgroundColor: "#E37F2A",
+        borderColor: "#E37F2f",
+        tension: 0.1
+      }]
+    };
+
+    console.log('----------------------------------------------')
+    console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+    console.log(resposta)
+
+    // Inserindo valores recebidos em estrutura para plotar o gráfico
+    for (i = 0; i < resposta.length; i++) {
+      var registro = resposta[i];
+      labels.push(registro.momento_grafico);
+      dados.datasets[0].data.push(registro.umidade);
+      dados.datasets[1].data.push(registro.temperatura);
+    }
+
+    console.log('----------------------------------------------')
+    console.log('O gráfico será plotado com os respectivos valores:')
+    console.log('Labels:')
+    console.log(labels)
+    console.log('Dados:')
+    console.log(dados.datasets)
+    console.log('----------------------------------------------')
+
+    // Criando estrutura para plotar gráfico - config
+    const config = {
+      type: 'line',
+      data: dados,
+    };
+
+    // Adicionando gráfico criado em div na tela
+    let myChart = new Chart(
+      document.getElementById(`myChartLine`),
+      config
+    );
+
+    setTimeout(() => atualizarGrafico(idSensor, dados, myChart), 2000);
+  }
+
+
+  // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+  // buscando a última medida inserida em tabela contendo as capturas, 
+
+  //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+  //     Para ajustar o "select", ajuste o comando sql em src/models
+  function atualizarGrafico(idSensor, dados, myChart) {
+
+
+
+    fetch(`/medidas/tempo-real/${idSensor}`, { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (novoRegistro) {
+
+          console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+          console.log(`Dados atuais do gráfico:`);
+          console.log(dados);
+
+          // let avisoCaptura = document.getElementById(``)
+          // avisoCaptura.innerHTML = ""
+
+
+          if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+            console.log("---------------------------------------------------------------")
+            console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+            // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+            console.log("Horário do novo dado capturado:")
+            console.log(novoRegistro[0].momento_grafico)
+            console.log("Horário do último dado capturado:")
+            console.log(dados.labels[dados.labels.length - 1])
+            console.log("---------------------------------------------------------------")
+          } else {
+            // tirando e colocando valores no gráfico
+            dados.labels.shift(); // apagar o primeiro
+            dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+
+            dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+            dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
+
+            dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+            dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+
+            myChart.update();
+          }
+
+          // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+          proximaAtualizacao = setTimeout(() => atualizarGrafico(idSensor, dados, myChart), 5000);
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+        proximaAtualizacao = setTimeout(() => atualizarGrafico(idSensor, dados, myChart), 2000);
+      }
+    })
+      .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+      });
+
+  }
+
+  function atualizacaoPeriodica() {
+    obterdados(1);
+    // function sendData() {
+    //     var http = new XMLHttpRequest();
+    //     http.open('POST', 'http://localhost:3000/api/sendData', false);
+    //     http.send(null);
+    // }
+
+    // setInterval(() => {
+    //     sendData();
+    // }, 2000);
+
+    setTimeout(atualizacaoPeriodica, 5000);
+  }
+
+  function obterdados(idSensor) {
+    fetch(`/medidas/tempo-real/${idSensor}`)
+      .then(resposta => {
+
+        if (resposta.ok) {
+          resposta.json().then(resposta => {
+
+            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+            var dados = {
+              temperatura: resposta[0].temperatura,
+              momento: resposta[0].momento
+            }
+            alertar(resposta[0].temperatura, idSensor);
+
+          });
+        } else {
+
+          console.error('Nenhum dado encontrado ou erro na API');
+        }
+      })
+      .catch(function (error) {
+        console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+      });
+
+  }
+</script>
+
+</html>

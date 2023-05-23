@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/styleSimulador.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./assets/assetsIndex/logo.png"
+    />
+    <title>FF-SimuladorFinanceiro</title>
+  </head>
+  <body>
+    <div class="header" id="Home">
+        <div class="logo">
+          <div class="imagem">
+            <img
+              src="./assets/assetsIndex/logo.png"
+              style="
+                margin-right: -100px;
+                height: 120px;
+                width: 95px;
+                margin-left: -30px;
+              "
+            />
+          </div>
+        </div>
+        <div class="menu1">
+          <ul>
+            <li>
+              <a href="./index.html"><b>Solução</b></a>
+            </li>
+            <li>
+              <a href="#"
+                ><b>Simulador</b></a
+              >
+            </li>
+            <li>
+              <a href="./index.html"><b>Sobre Nós</b></a>
+            </li>
+            <li>
+              <a href="./login.html"><b>Dashboard</b></a>
+            </li>
+          </ul>
+        </div>
+        <div class="menu2">
+          <ul>
+            <li>
+              <a href="./login.html"><b>Entrar</b></a>
+            </li>
+            <li>
+              <a href="./cadastro.html"><b>Cadastrar-se</b></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <main>
+        
+      <article>
+        <form action="">
+          <h1 class="titulo">Simulador Financeiro</h1>
+          <h3>Qual frango de corte você possui?</h3>
+          <select id="tipo_frag">
+            <option value=""></option>
+            <option value="9.94">Embrapa 021</option>
+            <option value="11.56">Paraíso Pedrês</option>
+            <option value="10.50">Gigante Negro</option>
+            <option value="9.18">Caipira Pescoço Pelado</option>
+            <option value="10.47">Pesadão Vermelho</option>
+          </select>
+          <br />
+          <h3>Quantidade de aves por galpão :</h3>
+          <input type="number" id="qtd_aves_i" />
+          <br />
+          <h3>Quantidade de galpões :</h3>
+          <input type="number" id="qtd_galpao_i" />
+          <br />
+          <h3>Area do galpão :</h3>
+          <input type="number" id="area_gal_i" /> <br />
+          <button onclick="calcular()">Calcular!</button> <br />
+        </form>
+      </article>
+      <article id="respostas">
+        <div id="exibir_infos"></div>
+      </article>
+    </main>
+  </body>
+</html>
+
+<script>
+
+
+  function calcular() {
+    event.preventDefault();
+  exibir_infos.innerHTML = "";
+  // restante do código
+
+    exibir_infos.innerHTML = "";
+    var valor = Number(tipo_frag.value);
+    var qtd_aves = Number(qtd_aves_i.value);
+    var qtd_galpao = Number(qtd_galpao_i.value);
+    var total = valor * qtd_aves * qtd_galpao;
+    var economia = (total * 20) / 100;
+    var area = Number(area_gal_i.value);
+    var valor_sensor = (area / 12).toFixed(0) * 200 * qtd_galpao;
+
+    if (valor <= 0 || qtd_aves <= 0 || qtd_galpao <= 0) {
+      alert("Valores invalidos inseridos!");
+    } else {
+      exibir_infos.innerHTML += `<h1><img style="margin-right:1vw;" width="50px" src="imgs/dollar.svg" alt="">
+        O seu valor atual investido em aves é de R$${total.toFixed(2)}</h1> <br>`;
+
+      exibir_infos.innerHTML += `<h2> Vamos simular o prejuizo que você pode ter! </h2><br>`;
+
+      exibir_infos.innerHTML += `<span id="spam1"><img width="75px" src="imgs/frangoVermelho.svg" alt="">
+        Com o prejuizo de 20%, sua perda será de : R$${economia.toFixed(2)} </span> <br>`;
+
+      exibir_infos.innerHTML += `<span id="spam2"><img width="50px" src="imgs/frangoAmarelo.svg" alt="">
+        Com o prejuizo de 10%, sua perda será de : R$${(
+        (total * 10) /100).toFixed(2)}  </span><br>`;
+
+      exibir_infos.innerHTML += `<span id="spam3"><img width="50px" src="imgs/frangoVerde.svg" alt="">
+        Com o prejuizo de 5%, sua perda será de : R$${((total * 5) /100).toFixed(2)} </span><br>`;
+
+      exibir_infos.innerHTML += `<span id="spam4"><h2> Você precisará de ${(area / 12).toFixed(0)} sensores por galpão<br /> totalizando um investimento de R$${valor_sensor.toFixed(2)}<h2></span> <br>`;
+    }
+  }
+</script>

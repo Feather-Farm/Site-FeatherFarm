@@ -1,0 +1,473 @@
+/* *{
+    padding: 0;
+    margin: 0;
+    padding: 0;
+} */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;900&display=swap');
+
+
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+
+.divPai {
+    height: fit-content;
+    width: 100%;
+    justify-content: center;
+    background-color: #fff9e3;
+}
+
+.header {
+    width: 100%;
+    height: 280px;
+    background-image: url('../assets/assetsIndex/header.png');
+    background-color: #fff9e3;
+    display: flex;
+    background-repeat: no-repeat;
+    justify-content: space-evenly;
+    padding-top: 40px;
+    background-position: center top;
+    background-size: 100%;
+    text-align: center;
+
+}
+
+.containerInicial {
+    background-color: #fff9e3;
+    width: 100%;
+    height: 18%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 2%;
+}
+
+.containerEmpresa {
+
+    background-color: #fff9e3;
+    width: 100%;
+    height: fit-content;
+}
+
+.diagrama {
+    width: 100%;
+    height: fit-content;
+    background-color: #fff9e3;
+}
+
+.diagrama .imagem_texto {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.diagrama .titulo {
+    width: 80%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-bottom: 50px;
+    margin-left: 16%;
+    font-family: 'Poppins';
+}
+
+.diagrama .imagem {
+    width: fit-content;
+    height: fit-content;
+}
+
+.diagrama .texto {
+    width: 400px;
+    font-size: 30px;
+    font-family: 'Poppins';
+    line-height: 50px;
+}
+
+.dashboard {
+    margin: 100px 0px 50px 0px;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff9e3;
+}
+
+.dashboard .texto {
+    width: 50%;
+    height: fit-content;
+    margin-left: 130px;
+}
+
+.dashboard .texto .corpo {
+    font-family: 'Poppins';
+    font-size: 30px;
+    line-height: 45px;
+    color: black;
+    width: 80%;
+}
+
+.dashboard .imagem {
+    width: 50%;
+    height: fit-content;
+    margin-right: 0px;
+}
+
+.dashboard .botao {
+    width: 500px;
+    height: 50px;
+}
+
+
+
+
+.sensores {
+    background-color: #fff9e3;
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+    padding-bottom: 100px;
+    margin-top: 70px;
+}
+
+.sobreNos {
+    background-color: #fff9e3;
+    width: 100%;
+    height: fit-content;
+}
+
+
+
+.divisao01 {
+    background-image: url('../assets/assetsIndex/divisao1.png');
+    height: 246px;
+    width: 100%;
+    background-color: #fff9e3;
+    background-position: center top;
+    background-size: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+}
+
+.textosInicial {
+    width: 600px;
+    height: 500px;
+    font-family: 'Poppins', monospace;
+    margin-top: -250px;
+    margin-left: 80px;
+}
+
+.titulo {
+    width: 130%;
+    font-size: 52px;
+    line-height: 70px;
+    height: 200px;
+    color: #39842C;
+    margin-bottom: -30px;
+}
+
+.corpo {
+    margin-bottom: 70px;
+    font-size: 27px;
+    line-height: 50px;
+    color: #5db34e;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(../assets/assetsIndex/Poppins-Regular.ttf);
+}
+
+@font-face {
+    font-family: Poppins-bold;
+    src: url(../assets/assetsIndex/Poppins-Bold.ttf);
+}
+
+.menu1 {
+    margin-right: -130px;
+    margin-left: -50px;
+}
+
+.menu2 {
+    margin-right: -50px;
+}
+
+.menu1 li {
+    display: inline-block;
+}
+
+.menu1 li a {
+    margin: 0 10px;
+    font-size: 26px;
+    text-decoration: none;
+    color: #E37F2A;
+    font-family: 'Poppins';
+}
+
+.menu2 li {
+    display: inline-block;
+}
+
+.menu2 li a {
+    margin: 0 10px;
+    font-size: 24px;
+    text-decoration: none;
+    color: #FFDD57;
+    font-family: 'Poppins';
+    background-color: #E37F2A;
+    padding: 5px 50px;
+    border-radius: 40px;
+    box-shadow: 3px 4px 4px rgba(81, 81, 81, 0.47);
+    transition: 0.2s;
+    text-shadow: 0px 4px 4px #914c11;
+
+}
+
+.menu2 li a:hover {
+    background-color: #e7a036;
+    color: #FFDD57;
+}
+
+.botao {
+    width: 600px;
+
+}
+
+input[type='Submit'] {
+    padding: 20px 110px;
+    font-size: 30px;
+    font-family: 'Poppins-bold';
+    border-radius: 40px;
+    background-color: #E37F2A;
+    color: #FFDD57;
+    text-shadow: 0px 4px 4px #914c11;
+    box-shadow: 0px 4px 0px #F1D66D;
+    border: 1px solid #E37F2A;
+    margin-top: -30px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+input[type='Submit']:hover {
+    background-color: #e7a036;
+    color: #FFDD57;
+    border: 1px solid #e7a036;
+    margin-top: -32px;
+}
+
+.empresa {
+    display: flex;
+    width: 100%;
+}
+
+.textosEmpresa .corpo {
+    margin-left: 100px;
+    color: black;
+    line-height: 45px;
+    width: 89%;
+    margin-top: -60px;
+    font-size: 25px;
+
+}
+
+.textosEmpresa .titulo {
+    font-family: 'Poppins';
+    color: #39842C;
+    font-size: 52px;
+    line-height: 96px;
+    margin-top: 50px;
+    margin-left: 172px;
+}
+
+.empresa .imagem {
+    margin-top: 125px;
+    margin-right: 90px;
+}
+
+.sensores .titulo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-family: 'Poppins';
+    margin-top: 5px;
+    margin-bottom: -30px;
+    font-size: 52px;
+}
+
+.tiposSensores {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.sensor {
+    height: 500px;
+    width: 350px;
+    background-color: white;
+    border: 1px solid white;
+    box-shadow: 0px 4px 25px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin: 0px -5%;
+
+}
+
+.sensor .titulo {
+    font-size: 30px;
+    font-family: 'Poppins';
+    width: 100%;
+    color: #E37F2A;
+    margin-top: 100px;
+}
+
+.sensor .corpo {
+    font-size: 18px;
+    line-height: 31.5px;
+    text-align: center;
+    color: #222;
+    font-weight: 500;
+    margin: -100px 30px;
+}
+
+.sensor .imagem {
+    height: 120px;
+    width: 350px;
+    border-radius: 50px;
+    margin-bottom: -50px;
+    margin-top: -50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.imagem .aquivoImagem {
+    height: 120px;
+    width: 120px;
+    border-radius: 60px;
+    background-color: #5db34e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sobreNos .titulo {
+    width: 100%;
+    height: fit-content;
+    font-size: 52px;
+    font-family: 'Poppins';
+    color: #39842C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 100px;
+}
+
+.containersSobreNos {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 100px;
+}
+
+.containersSobreNos .imagem {
+    width: 30%;
+    height: fit-content;
+    padding: 10px 50px;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.containersSobreNos .texto {
+    width: 50%;
+    height: auto;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.texto .conteudoTexto {
+    font-family: 'Poppins';
+    padding: 50px 100px 50px 100px;
+    color: #222;
+    font-size: 22px;
+    line-height: 48px;
+}
+.laranja{
+    color: #E37F2A;
+}
+.verde{
+    color: #39842C;
+}
+
+.footer {
+    background-color: #e9cd53;
+    width: 100%;
+    height: 270px;
+}
+
+.footer .principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 150px;
+    height: fit-content;
+}
+
+.footer .principal .logo {
+    width: fit-content;
+    height: auto;
+}
+
+.footer .principal .contato {
+    width: fit-content;
+    height: auto;
+    font-family: 'Poppins';
+    line-height: 30px;
+    text-align: center;
+}
+
+.footer .divisor {
+    background-color: #E37F2A;
+    height: 3px;
+    width: 90%;
+    margin-left: 5%;
+}
+
+.footer .direitos {
+    font-family: 'Poppins';
+    color: black;
+    margin: 10px 7%;
+}
+
+
+.footer .principal .contato .telefone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins';
+}
+
+.footer .principal .contato .email {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins';
+}

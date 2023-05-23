@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./css/styleLogin.css">
+    <link rel="icon" type="image/x-icon" href="./assets/assetsIndex/logo.png">
+
+</head>
+
+<body>
+
+    <main>
+        <div class="header">
+            <div class="container">
+                <a href="./index.html">
+                    <img id="logo" src="./assets/assetsLogin/logo_top.png">
+                </a>
+            </div>
+            <div id="img_principal">
+
+                <img id="img_farmer" src="./assets/assetsLogin/Farmer_pana1.png">
+
+            </div>
+        </div>
+
+        <div id="login">
+            <form action="" class="form">
+                <h1 class="text-center">LOGIN</h1>
+
+
+                <div class="input-group">
+
+                    <label for="email">EMAIL</b></label>
+                    <input id="input_email" autocomplete="off" type="email" name="email" placeholder="example@mail.com"
+                        required="required" maxlength="100">
+
+                </div>
+                <div class="input-group">
+
+                    <label for="senha">SENHA</b></label>
+                    <input id="input_senha" ; type="password" autocomplete="off" type="text" name="senha"
+                        placeholder="password" required="required" maxlength="18" minlength="18">
+                    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
+                    <div id="conectado">
+                        <input id="check" type="checkbox" checked="checked">
+                        <p>Mantenha-me conectado</p>
+
+                    </div>
+
+                    <div class="btns-group">
+                        <a onclick="entrar()" href="#" class="btn">ENTRAR</a>
+                    </div>
+
+                    <div id="social">
+                        <p>entrar com:</p>
+                        <a href="#">
+                            <img src="./assets/assetsLogin/btn_google.jpg">
+                        </a>
+                        <a href="#">
+                            <img src="./assets/assetsLogin/btn_facebook.jpg">
+                        </a>
+                        <a href="#">
+                            <img src="./assets/assetsLogin/btn_linkedin.jpg">
+                        </a>
+
+
+
+                    </div>
+                </div>
+                <div id="forgot">
+                    <a href="#">
+                        <u>
+                            Esqueceu sua senha?
+                        </u>
+                    </a>
+
+                </div>
+            </form>
+
+        </div>
+
+    </main>
+
+</html>
+</body>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+
+    function entrar() {
+
+        var emailVar = input_email.value;
+        var senhaVar = input_senha.value;
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Sucesso!',
+                        text: 'Redirecionando para dashboards!',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+
+                    setTimeout(function () {
+                        window.location = "./dashboard/index.html"
+                    }, 2000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Erro',
+                    text: 'Email ou senha preenchido incorretamente!',
+                    showConfirmButton: true,
+                })
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+</script>

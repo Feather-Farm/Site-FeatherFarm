@@ -1,0 +1,222 @@
+:root {
+    --primary-color: rgb(255, 136, 0);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html {
+height: 100%;
+
+}
+body {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255,166,0,1) 0%, #ff8d00 100%);
+    font-family: Montserrat, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-height: auto;
+    float: right;
+    padding: 2%;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    width: 95%;
+    height: 90%;
+    position: absolute;
+    top: 5%;
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFFBEA;
+    border:1px solid transparent;
+    border-radius: 20px;
+    box-shadow: 0px 0px 25px rgba(0,0,0,0.75);
+    
+}
+
+.header{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+
+.container{
+width: 50%;
+display: flex;
+justify-content: flex-start;
+
+align-items: center;
+}
+
+#img_principal {
+display: flex;
+width: 80%;
+height: 90%;
+display: flex;
+justify-content: center;
+background-color: transparent;
+margin-top: -10vh;
+align-items: center;
+margin-left: 20%;
+}
+
+#img_farmer{
+    width: 100%;
+    height: 90%;
+
+    background-color: transparent;
+    
+}
+
+#logo{
+    margin-top: 10%;
+    margin-left: 15%;
+}
+
+
+#login {
+display: flex;
+width: 45%;
+height: 100%;
+
+
+}
+
+
+
+.form {
+    background-color: #39842C66;
+    padding: 15%;
+    width: 90%;
+    margin-right: 0; 
+    margin-left: auto;
+    border-radius: 30px 20px 20px 30px;
+    box-shadow: -12px 3px 15px 0px rgba(0,0,0,0.75);
+}
+
+
+input {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ff8d00;
+    border-radius: 0.25rem;
+    outline: none;
+}
+input::placeholder{
+    color: #135E06;
+}
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #135E06;
+    font-weight: 950;
+}
+
+.input-group {
+    margin: 2rem 0;
+
+}
+.input-group input{
+    width: 90%;
+
+background-color: transparent;
+border-radius: 15px;
+}
+.btn {
+    padding: 0.75rem;
+    display: block;
+    text-decoration: none;
+    background-color: var(--primary-color);
+    color: #135E06;
+    text-align: center;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: -12px 7px 15px 0px rgba(0,0,0,0.75);
+}
+
+.width-50 {
+    width: 50%;
+}
+
+
+
+
+.text-center {
+    text-align: start;
+    color: #135E06;
+    margin-top: 0%;
+    margin-bottom: 5%;
+}
+
+.btns-group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.form-step {
+    display: none;
+    transform-origin: top;
+    animation: animate 0.5s;
+}
+
+.form-step-active {
+    display: block;
+}
+
+#conectado{
+    display: flex;
+    justify-content: flex-start;
+
+}
+
+
+
+input[type="checkbox"]{
+    width: 1.5rem;
+    
+
+color: #fff;
+accent-color: #135E06;
+
+}
+#conectado p{
+    margin-left: 3%;
+    color: #135E06;
+}
+
+#social{
+    margin-top: 10%;
+    display: flex;
+    justify-content:space-between;
+    margin-bottom: 0.5rem;
+    color: #135E06;
+    font-weight: 950;
+}
+#social img{
+    width: auto;
+    height: auto;
+}
+#forgot{
+    display: flex;
+    justify-content: flex-end;
+    color: var(--primary-color);
+}
+#forgot a u{
+    color: #135E06;
+    font-weight: 500;
+}

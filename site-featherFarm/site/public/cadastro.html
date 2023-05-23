@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styleCadastro.css">
+    <link rel="icon" type="image/x-icon" href="./assets/assetsIndex/logo.png">
+
+    <title>Cadastro</title>
+</head>
+
+<body>
+    <div class="container">
+        <form action="login.html" class="form">
+            <h1 class="text-center">Cadastro</h1>
+            <!-- barra de progresso -->
+            <div class="progressbar">
+                <div class="progress" id="progress"></div>
+                <div class="progress-step progress-step-active">
+
+                </div>
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+            </div>
+
+            <!-- final da barra de progresso-->
+            <div class="form-step form-step-active">
+                <div class="input-group">
+                    <label for="nome_razão_social">RAZÃO SOCIAL <b style="color: red;"
+                            title="Este campo é obrigatório">*</b></label>
+                    <input id="input_razao_social" autocomplete="off" type="text" name="razão_social"
+                        placeholder="Exemple: Feather Farm" required="required" minlength="2" maxlength="50">
+                </div>
+
+                <div class="input-group">
+                    <label for="nome_fantasia">Nome fantasia <b style="color: red;"
+                            title="Este campo é obrigatório">*</b></label>
+                    <input id="input_nome_fantasia" autocomplete="off" type="text" name="nome_fantasia"
+                        placeholder="Exemple: Feather Farm" required="required" minlength="2" maxlength="50">
+                </div>
+
+                <div class="input-group">
+                    <label for="cnpj_empresa">CNPJ <b style="color: red;" title="Este campo é obrigatório">*</b></label>
+                    <input id="input_cnpj" autocomplete="off" type="text" name="cnpj" placeholder="00.000.000/0001-00"
+                        required="required" maxlength="18">
+                </div>
+
+                <div class="input-group">
+                    <label for="Senha">SENHA <b style="color: red;" title="Este campo é obrigatório">*</b></label>
+                    <input id="input_senha" autocomplete="off" type="password" name="senha" placeholder="********"
+                        required="required" maxlength="8">
+                </div>
+
+                <div class="">
+                    <a onclick="validarEtapa1()" href="#" class="btn btn-next width-50 ml-auto">Proximo</a>
+                </div>
+            </div>
+
+
+            <div class="form-step">
+                <div class="input-group">
+                    <label for="cep">CEP <b style="color: red;" title="Este campo é obrigatório">*</b></label>
+                    <input id="input_cep" autocomplete="off" type="text" name="cep" placeholder="01234-567"
+                        required="required" minlength="9" maxlength="9">
+                </div>
+
+                <div class="input-group">
+                    <label for="logradouro_endereco">LOGRADOURO <b style="color: red;"
+                            title="Este campo é obrigatório">*</b></label>
+                    <input id="input_logradouro" autocomplete="off" type="text" name="logradouro"
+                        placeholder="Logradouro" required="required" minlength="5" maxlength="50">
+                </div>
+
+                <div class="input-group">
+                    <label for="numero_endereco">Nº <b style="color: red;"
+                            title="Este campo é obrigatório">*</b></label>
+                    <input id="input_numero" autocomplete="off" type="text" name="numero" placeholder="Exemple: 12345"
+                        required="required" minlength="1" maxlength="5">
+                </div>
+
+                <div class="input-group">
+                    <label for="Bairro_endereco">BAIRRO <b style="color: red;"
+                            title="Este campo é obrigatório">*</b></label>
+                    <input id="input_bairro" autocomplete="off" type="text" name="bairro" placeholder="Bairro"
+                        required="required" min="2" maxlength="50">
+                </div>
+
+                <div class="btns-group">
+                    <a onclick="voltarEtapas()" href="#" class="btn btn-prev">Voltar</a>
+                    <a onclick="validarEtapa2()" href="#" class="btn btn-next">Proximo</a>
+                </div>
+            </div>
+
+            <div class="form-step">
+                <div class="input-group">
+                    <label for="Uf">UF <b style="color: red;" title="Este campo é obrigatório">*</b></label>
+                    <!-- <input id="input_uf" autocomplete="off" class="input_uppercase" minlength="2" maxlength="2" type="text" name="uf" placeholder="SP"
+                        required="required"> -->
+                    <select class="select_uf" name="UF" id="select_uf">
+                        <option value=""></option>
+                        <option value="AC">AC</option>
+                        <option value="AL">AL</option>
+                        <option value="AP">AP</option>
+                        <option value="AM">AM</option>
+                        <option value="BR">BA</option>
+                        <option value="CE">CE</option>
+                        <option value="DF">DF</option>
+                        <option value="ES">ES</option>
+                        <option value="GO">GO</option>
+                        <option value="MA">MA</option>
+                        <option value="MT">MT</option>
+                        <option value="MS">MS</option>
+                        <option value="MG">MG</option>
+                        <option value="PA">PA</option>
+                        <option value="PB">PB</option>
+                        <option value="PR">PR</option>
+                        <option value="PE">PE</option>
+                        <option value="PI">PI</option>
+                        <option value="RJ">RJ</option>
+                        <option value="RN">RN</option>
+                        <option value="RS">RS</option>
+                        <option value="RO">RO</option>
+                        <option value="RR">RR</option>
+                        <option value="SC">SC</option>
+                        <option value="SP">SP</option>
+                        <option value="SE">SE</option>
+                        <option value="TO">TO</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="Cidade">CIDADE <b style="color: red;" title="Este campo é obrigatório">*</b></label>
+                    <input id="input_cidade" autocomplete="off" type="text" name="cidade"
+                        placeholder="Exemple: São Paulo" required="required" min="2" maxlength="50">
+                </div>
+
+                <div class="input-group">
+                    <label for="Nome_responsavel">NOME <b style="color: red;"
+                            title="Este campo é obrigatório">*</b></label>
+                    <input id="input_nome" autocomplete="off" type="text" name="nome"
+                        placeholder="Responsável pelo cadastro" required="required" min="2" maxlength="50">
+                </div>
+
+                <div class="input-group">
+                    <label for="Sobrenome_responsavel">SOBRENOME <b style="color: red;"
+                            title="Este campo é obrigatório">*</b></label>
+                    <input id="input_sobrenome" autocomplete="off" type="text" name="sobrenome"
+                        placeholder="Responsável pelo cadastro" required="required" min="2" maxlength="50">
+                </div>
+
+                <div class="btns-group">
+                    <a onclick="voltarEtapas()" href="#" class="btn btn-prev">Voltar</a>
+                    <a onclick="validarEtapa3()" href="#" class="btn btn-next">Proximo</a>
+                </div>
+            </div>
+
+            <div class="form-step">
+                <div class="input-group">
+                    <label for="Email">EMAIL <b style="color: red;" title="Este campo é obrigatório">*</b></label>
+                    <input id="input_email" autocomplete="off" type="email" name="email"
+                        placeholder="Exemple@exemple.com" required="required" minlength="3" maxlength="50">
+                </div>
+
+                <div class="input-group">
+                    <label for="Email2">EMAIL (2)</label>
+                    <input id="input_email2" autocomplete="off" type="email" name="email2"
+                        placeholder="Exemple@exemple.com" minlength="3" maxlength="50">
+                </div>
+
+                <div class="input-group">
+                    <label for="Telefone">TELEFONE <b style="color: red;" title="Este campo é obrigatório">*</b></label>
+                    <input id="input_telefone" autocomplete="off" type="tel" name="tel" placeholder="(01)2345-6789"
+                        required="required" minlength="13" maxlength="13">
+                </div>
+
+                <div class="input-group">
+                    <label for="Telefone2">TELEFONE (2)</label>
+                    <input id="input_telefone2" autocomplete="off" type="tel" name="tel2" placeholder="(01)2345-6789"
+                        minlength="13" maxlength="13">
+                </div>
+
+                <div class="btns-group">
+                    <a onclick="voltarEtapas()" href="#" class="btn btn-prev">Voltar</a>
+                    <a onclick="validarEtapa4()" href="#" class="btn btn-next">Proximo</a>
+                </div>
+            </div>
+        </form>
+
+        <div class="form-image">
+            <div class="image-logo"><a href="./index.html" id="img_logo">
+                    <img src="./assets/assetsCadastro/logoComNome.png" alt="img logo">
+                </a></div>
+            <div class="image-farm">
+                <img src="./assets/assetsCadastro/ImagemCadastro.png" alt="img cadastro">
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
+<script>
+    var inputNome = document.querySelector("#input_nome");
+    input_nome.addEventListener("keypress", function (e) {
+        var keyCode = (e.keyCode ? e.keyCode : e.which);
+
+        if ((keyCode < 32) || (keyCode > 32 && keyCode < 65) || (keyCode > 90 && keyCode < 97) || (keyCode > 122 && keyCode < 192) || (keyCode > 383)) {
+            e.preventDefault();
+        }
+    });
+    var inputSobrenome = document.querySelector("#input_sobrenome");
+    input_sobrenome.addEventListener("keypress", function (e) {
+        var keyCode = (e.keyCode ? e.keyCode : e.which);
+
+        if ((keyCode < 32) || (keyCode > 32 && keyCode < 65) || (keyCode > 90 && keyCode < 97) || (keyCode > 122 && keyCode < 192) || (keyCode > 383)) {
+            e.preventDefault();
+        }
+    });
+
+
+    $('#input_telefone').mask('(00)00000-0000');
+    $('#input_telefone').mask('(00)00000-0000');
+    $('#input_cep').mask('00000-000');
+    $('#input_cnpj').mask('00.000.000/0000-00');
+    // ---------- barra de progresso ----------
+
+    const progresso = document.getElementById("progress");
+    const EtapaDoFormulario = document.querySelectorAll(".form-step");
+    const ProgressoEtapas = document.querySelectorAll(".progress-step");
+    const BotaoVoltar = document.querySelectorAll(".btn-prev");
+
+    var NumeroDaEtapa = 0;
+
+    // validar etapa 1
+    // Essa função valida a primeira etapa do cadastro, pegando o valor das constantes e guardando-as nas variáveis
+    // Quando a validação for efetuada corretamente, cai no else e soma 1 na variável do numero da etapa
+    function validar1() {
+
+        var empresaValue = input_razao_social.value
+        var nome_fantasiaValue = input_nome_fantasia.value
+        var cnpj_empresaValue = input_cnpj.value
+        var senhaValue = input_senha.value
+
+        if ((empresaValue == '' || empresaValue.length < 2) || (nome_fantasiaValue == '' || nome_fantasiaValue.length < 2) || (cnpj_empresaValue == '' || cnpj_empresaValue.length < 14) || (senhaValue == '' || senhaValue.length < 3)) {
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Erro',
+                text: 'Algum campo foi preenchido incorretamente!',
+                showConfirmButton: true,
+            })
+            return false
+        } else {
+            NumeroDaEtapa++
+        }
+
+
+    }
+    function validarEtapa1() {
+        validar1();
+        AvancarEtapas();
+        AvancarBarraDeProgresso();
+    }
+
+    // validar etapa 2
+    // Essa função valida a Segunda etapa do cadastro, pegando o valor das constantes e guardando-as nas variáveis
+    // Quando a validação for efetuada corretamente, cai no else e soma 1 na variável do numero da etapa
+    function validar2() {
+        var cepValue = input_cep.value
+        var logradouroValue = input_logradouro.value
+        var numeroValue = input_numero.value
+        var bairroValue = input_bairro.value
+
+        if ((cepValue == '' || cepValue.length < 9) || (logradouroValue == '' || logradouroValue.length < 5) || numeroValue == '' || (bairroValue == '' || bairroValue.length < 2)) {
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Erro',
+                text: 'Algum campo foi preenchido incorretamente!',
+                showConfirmButton: true,
+            })
+            return false
+        } else {
+            NumeroDaEtapa++
+        }
+    }
+
+    function validarEtapa2() {
+        validar2();
+        AvancarEtapas();
+        AvancarBarraDeProgresso();
+    }
+
+
+    // validar etapa 3
+    // Essa função valida a Terceira etapa do cadastro, pegando o valor das constantes e guardando-as nas variáveis
+    // Quando a validação for efetuada corretamente, cai no else e soma 1 na variável do numero da etapa
+    function validar3() {
+        var ufValue = select_uf.value
+        var cidadeValue = input_cidade.value
+        var nomeValue = input_nome.value
+        var sobrenomeValue = input_sobrenome.value
+
+        if (ufValue == '' || (cidadeValue == '' || cidadeValue.length < 2) || (nomeValue == '' || nomeValue.length < 2) || (sobrenomeValue == '' || sobrenomeValue.length < 2)) {
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Erro',
+                text: 'Algum campo foi preenchido incorretamente!',
+                showConfirmButton: true,
+            })
+            return false
+        } else {
+            NumeroDaEtapa++
+        }
+    }
+
+    function validarEtapa3() {
+        validar3();
+        AvancarEtapas();
+        AvancarBarraDeProgresso();
+    }
+
+
+    // validar etapa 4
+    // Essa função valida a Ultima etapa do cadastro, pegando o valor das constantes e guardando-as nas variáveis
+    // Quando a validação for efetuada corretamente, cai no else e soma 1 na variável do numero da etapa
+    function validar4() {
+        var emailValue = input_email.value
+        var email2Value = input_email2.value
+        var telefoneValue = input_telefone.value
+        var telefone2Value = input_telefone2.value
+
+        if (emailValue == '' || telefoneValue == '') {
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Erro',
+                text: 'Algum campo foi preenchido incorretamente!',
+                showConfirmButton: true,
+            })
+            return false
+        }
+    }
+
+    function validarEtapa4() {
+        validar4();
+        AvancarEtapas();
+        AvancarBarraDeProgresso();
+        cadastrar();
+        cadastrarAdmin();
+    }
+
+
+    function voltarEtapas() {
+        NumeroDaEtapa--;
+        AvancarEtapas();
+        AvancarBarraDeProgresso();
+    }
+
+    function AvancarEtapas() {
+        EtapaDoFormulario.forEach((formStep) => {
+            formStep.classList.contains("form-step-active") &&
+                formStep.classList.remove("form-step-active");
+        });
+
+        EtapaDoFormulario[NumeroDaEtapa].classList.add("form-step-active");
+    }
+
+
+    function AvancarBarraDeProgresso() {
+        ProgressoEtapas.forEach((EtapasFormulario, indice) => {
+            if (indice < NumeroDaEtapa + 1) {
+                EtapasFormulario.classList.add("progress-step-active");
+            } else {
+                EtapasFormulario.classList.remove("progress-step-active");
+            }
+        });
+
+        const progressActive = document.querySelectorAll(".progress-step-active");
+
+        progresso.style.width =
+            ((progressActive.length - 1) / (ProgressoEtapas.length - 1)) * 100 + "%";
+    }
+
+
+    function cadastrar() {
+        var RazaoSocialVar = input_razao_social.value;
+        var Nome_fantasiaVar = input_nome_fantasia.value;
+        var CnpjVar = input_cnpj.value;
+        var CepVar = input_cep.value;
+        var LogradouroVar = input_logradouro.value;
+        var NumeroVar = input_numero.value;
+        var BairroVar = input_bairro.value;
+        var UfVar = select_uf.value;
+        var CidadeVar = input_cidade.value;
+
+
+        fetch("/empresas/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                RazaoSocialServer: RazaoSocialVar,
+                Nome_fantasiaServer: Nome_fantasiaVar,
+                CnpjServer: CnpjVar,
+                CepServer: CepVar,
+                LogradouroServer: LogradouroVar,
+                NumeroServer: NumeroVar,
+                BairroServer: BairroVar,
+                UfServer: UfVar,
+                CidadeServer: CidadeVar,
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Cadastro realizado com sucesso!',
+                    text: 'Redirecionando para tela de Login!',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+    }
+
+    function cadastrarAdmin() {
+        var NomeVar = input_nome.value;
+        var SobrenomeVar = input_sobrenome.value;
+        var EmailCadastroVar = input_email.value;
+        var Email2CadastroVar = input_email2.value;
+        var TelefoneVar = input_telefone.value;
+        var Telefone2Var = input_telefone2.value;
+        var SenhaVar = input_senha.value;
+
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                NomeServer: NomeVar,
+                SobrenomeServer: SobrenomeVar,
+                EmailCadastroServer: EmailCadastroVar,
+                Email2CadastroServer: Email2CadastroVar,
+                TelefoneServer: TelefoneVar,
+                Telefone2Server: Telefone2Var,
+                SenhaServer: SenhaVar,
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+    }
+
+
+
+</script>
