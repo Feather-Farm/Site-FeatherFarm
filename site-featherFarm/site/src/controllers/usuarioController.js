@@ -4,6 +4,7 @@ var usuarioModel = require("../models/usuarioModel");
 function entrar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
+    var tipo = req.body.tipoServer
 
     usuarioModel.entrar(email, senha)
         .then(
@@ -59,7 +60,37 @@ function cadastrar(req, res) {
         );
 }
 
+
+function cadastrarNovoUser(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var Nome = req.body.NomeServer;
+    var Sobrenome = req.body.SobrenomeServer;
+    var EmailCadastro = req.body.EmailCadastroServer;
+    var Telefone = req.body.TelefoneServer;
+    var Senha = req.body.SenhaServer;
+    var Tipo = req.body.TipoServer;
+
+
+    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+    usuarioModel.cadastrarNovoUser(Nome, Sobrenome, EmailCadastro, Telefone, Senha, Tipo)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     entrar,
-    cadastrar
+    cadastrar,
+    cadastrarNovoUser
 }

@@ -54,6 +54,7 @@
 
                     <div class="btns-group">
                         <a onclick="entrar()" href="#" class="btn">ENTRAR</a>
+                        <a onclick="redirecionar()" href="#" class="btn">CADASTRAR-SE</a>
                     </div>
 
                     <div id="social">
@@ -126,6 +127,7 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.TIPO_USUARIO = json.tipo;
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
@@ -134,10 +136,16 @@
                         showConfirmButton: false,
                         timer: 2000
                     })
-
-                    setTimeout(function () {
-                        window.location = "./dashboard/index.html"
-                    }, 2000); // apenas para exibir o loading
+                    if (json.tipo == "admin") {
+                        setTimeout(function () {
+                            window.location = "./dashboard/indexAdmin.html"
+                        }, 2000);
+                    }
+                    else {
+                        setTimeout(function () {
+                            window.location = "./dashboard/indexFunc.html"
+                        }, 2000);
+                    }
 
                 });
 
@@ -162,6 +170,21 @@
         })
 
         return false;
+    }
+
+    function redirecionar() {
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'OK!',
+            text: 'Redirecionando para tela de cadastro',
+            showConfirmButton: false,
+            timer: 2000
+        })
+
+        setTimeout(function () {
+            window.location = "cadastro.html"
+        }, 2000);
     }
 
 </script>

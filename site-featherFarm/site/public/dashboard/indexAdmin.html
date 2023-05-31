@@ -37,6 +37,10 @@
           <button id="suporte">
             <img src="../assets/assetsDashboard/supIcon.png" id="supIcon" alt="" /> Suporte
           </button>
+          <button onclick="cadastroNewUser()"
+            style="padding: 20px; background-color: #ff8800; color: white; border-radius: 15px; margin-top: 20px;">Cadastrar
+            Novo Usuário</button>
+
         </ul>
       </section>
     </article>
@@ -61,6 +65,7 @@
         <p class="verde" id="numGalpao">1</p>
       </div>
       <section id="areaRelatorio">
+        <div class="alerta"></div>
         <article id="graficoRelatorioGeral">
           <section class="graficoRelatorio">
             <h5 class="laranja">
@@ -184,6 +189,7 @@
     </article>
   </main>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 
   //
@@ -442,6 +448,12 @@
           resposta.reverse();
 
           plotarGrafico(resposta, idSensor);
+          console.log('aaaaaaaaaaaaaa')
+          console.log(resposta)
+          alertar(resposta, idSensor);
+          console.log(resposta)
+          console.log("123123")
+
         });
       } else {
         console.error('Nenhum dado encontrado ou erro na API');
@@ -535,6 +547,7 @@
           console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
           console.log(`Dados atuais do gráfico:`);
           console.log(dados);
+          obterdados(idSensor)
 
           // let avisoCaptura = document.getElementById(``)
           // avisoCaptura.innerHTML = ""
@@ -593,6 +606,8 @@
     setTimeout(atualizacaoPeriodica, 5000);
   }
 
+  var alertas = [];
+
   function obterdados(idSensor) {
     fetch(`/medidas/tempo-real/${idSensor}`)
       .then(resposta => {
@@ -601,13 +616,9 @@
           resposta.json().then(resposta => {
 
             console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-
-            var dados = {
-              temperatura: resposta[0].temperatura,
-              momento: resposta[0].momento
-            }
-            alertar(resposta[0].temperatura, idSensor);
-
+            console.log(resposta)
+            console.log("123123")
+            alertar(resposta, idSensor)
           });
         } else {
 
@@ -619,6 +630,178 @@
       });
 
   }
+
+  function alertar(resposta, idSensor) {
+    console.log("estou na dashboard e fazendo alertas")
+    console.log(resposta)
+    var temp = resposta[0].temperatura;
+
+    console.log(idSensor === resposta[4].fkSensor)
+
+    var grauDeAviso = '';
+
+
+    var limites = {
+      muito_quente: 23.5,
+      quente: 22.5,
+      ideal: 21.5,
+      frio: 20.5,
+      muito_frio: 19.5
+    };
+
+    var classe_temperatura = 'cor-alerta';
+
+    if (temp >= limites.muito_quente) {
+      classe_temperatura = 'cor-alerta perigo-quente';
+      grauDeAviso = 'perigo quente'
+      grauDeAvisoCor = 'cor-alerta perigo-quente'
+      // exibirAlerta(temp, idSensor, grauDeAviso, grauDeAvisoCor)
+      Swal.fire({
+        title: 'PERIGO!',
+        text: 'Suas aves estão muito quetes e correm risco!',
+        imageUrl: 'https://gifs.eco.br/wp-content/uploads/2022/08/gifs-de-alerta-vermelho-0.gif',
+        imageWidth: 200,
+        imageHeight: 100,
+        imageAlt: 'Custom image',
+        timer: 5000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+        position: 'top-end'
+      })
+    }
+    else if (temp < limites.muito_quente && temp >= limites.quente) {
+      classe_temperatura = 'cor-alerta alerta-quente';
+      grauDeAviso = 'alerta quente'
+      grauDeAvisoCor = 'cor-alerta alerta-quente'
+      // exibirAlerta(temp, idSensor, grauDeAviso, grauDeAvisoCor)
+      Swal.fire({
+        title: 'ALERTA!',
+        text: 'Suas aves estão ficando quentes demais!',
+        imageUrl: 'https://4.bp.blogspot.com/-O5x2ZAdquyk/VzUSHcAiMxI/AAAAAAAAUlc/XXpxbVQrjisq_PiSZMimWohL_ACG-5glACLcB/s320/Gifs%2Banimados%2BSino%2B3.gif',
+        imageWidth: 150,
+        imageHeight: 100,
+        imageAlt: 'Custom image',
+        timer: 5000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+        position: 'top-end'
+      })
+    }
+    // else if (temp < limites.quente && temp > limites.frio) {
+    //   classe_temperatura = 'cor-alerta ideal';
+    //   removerAlerta(idSensor);
+    // }
+    else if (temp <= limites.frio && temp > limites.muito_frio) {
+      classe_temperatura = 'cor-alerta alerta-frio';
+      grauDeAviso = 'alerta frio'
+      grauDeAvisoCor = 'cor-alerta alerta-frio'
+      // exibirAlerta(temp, idSensor, grauDeAviso, grauDeAvisoCor)
+      Swal.fire({
+        title: 'ALERTA!',
+        text: 'Suas aves estão ficando frias demais!',
+        imageUrl: 'https://4.bp.blogspot.com/-O5x2ZAdquyk/VzUSHcAiMxI/AAAAAAAAUlc/XXpxbVQrjisq_PiSZMimWohL_ACG-5glACLcB/s320/Gifs%2Banimados%2BSino%2B3.gif',
+        imageWidth: 150,
+        imageHeight: 100,
+        imageAlt: 'Custom image',
+        timer: 5000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+        position: 'top-end'
+      })
+    }
+    else if (temp <= limites.muito_frio) {
+      classe_temperatura = 'cor-alerta perigo-frio';
+      grauDeAviso = 'perigo frio'
+      grauDeAvisoCor = 'cor-alerta perigo-frio'
+      // exibirAlerta(temp, idSensor, grauDeAviso, grauDeAvisoCor)
+      Swal.fire({
+        title: 'PERIGO!',
+        text: 'Suas aves estão muito frias e correm risco!',
+        imageUrl: 'https://gifs.eco.br/wp-content/uploads/2022/08/gifs-de-alerta-vermelho-0.gif',
+        imageWidth: 200,
+        imageHeight: 100,
+        imageAlt: 'Custom image',
+        timer: 5000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+        position: 'top-end'
+      })
+    }
+
+    //   var card;
+
+    //   if (idSensor == 1) {
+    //     temp_aquario_1.innerHTML = temp + "°C";
+    //     card = card_1
+    //   } else if (idSensor == 2) {
+    //     temp_aquario_2.innerHTML = temp + "°C";
+    //     card = card_2
+    //   } else if (idSensor == 3) {
+    //     temp_aquario_3.innerHTML = temp + "°C";
+    //     card = card_3
+    //   } else if (idSensor == 4) {
+    //     temp_aquario_4.innerHTML = temp + "°C";
+    //     card = card_4
+    //   }
+
+    //   card.className = classe_temperatura;
+    // }
+
+    // function exibirAlerta(temp, idSensor, grauDeAviso, grauDeAvisoCor) {
+    //   var indice = alertas.findIndex(item => item.idSensor == idSensor);
+
+    //   if (indice >= 0) {
+    //     alertas[indice] = { idSensor, temp, grauDeAviso, grauDeAvisoCor }
+    //   } else {
+    //     alertas.push({ idSensor, temp, grauDeAviso, grauDeAvisoCor });
+    //   }
+
+    //   exibirCards();
+
+    //   // Dentro da div com classe grauDeAvisoCor há um caractere "invisível", 
+    //   // que pode ser inserido clicando com o seu teclado em alt+255 ou pelo código adicionado acima.
+    // }
+
+    // function removerAlerta(idSensor) {
+    //   alertas = alertas.filter(item => item.idSensor != idSensor);
+    //   exibirCards();
+    // }
+
+    // function exibirCards() {
+    //   alerta.innerHTML = '';
+
+    //   for (var i = 0; i < alertas.length; i++) {
+    //     var mensagem = alertas[i];
+    //     alerta.innerHTML += transformarEmDiv(mensagem);
+    //   }
+    // }
+
+    // function transformarEmDiv({ idSensor, temp, grauDeAviso, grauDeAvisoCor }) {
+    //   return `<div class="mensagem-alarme">
+    //   <div class="informacao">
+    //   <div class="${grauDeAvisoCor}">&#12644;</div> 
+    //    <h3>Aquário ${idSensor} está em estado de ${grauDeAviso}!</h3>
+    //   <small>Temperatura ${temp}.</small>   
+    //   </div>
+    //   <div class="alarme-sino"></div>
+    //   </div>`;
+  }
+
+  function cadastroNewUser() {
+
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Ok, redirecionando!',
+      showConfirmButton: false,
+      timer: 2000
+    })
+
+    setTimeout(() => {
+      window.location = "../cadastroNovoUser.html";
+    }, "2000")
+  }
+
 </script>
 
 </html>

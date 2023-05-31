@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;900&display=swap');
 
 :root {
-    --primary-color: #ff8800;
+    --primary-color: rgb(255, 136, 0);
   }
 
 *,
@@ -79,7 +79,7 @@ body {
 input {
     display: block;
     width: 100%;
-    height: auto;
+    height: 5vh;
     padding: 0.75rem;
     border: 1px solid rgba(227, 127, 42, 1);
     border-radius: 0.8rem;
@@ -154,8 +154,9 @@ label {
     transition: all 1s; */
 }
 .text-center {
-    text-align: start;
+    text-align:start;
     color: #135e06;
+    font-size: 30px;
 }
 
 .btns-group {

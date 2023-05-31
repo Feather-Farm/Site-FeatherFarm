@@ -3,6 +3,8 @@
     border: 0;
     padding: 0;
     font-family: sans-serif;
+    overflow: hidden;
+
 }
 main{
     width: 100vw;
@@ -468,3 +470,10 @@ main{
     transform: scale(1.1);
     transition: all 0.8s;
   }
+
+.alerta{
+    width: 100px;
+    height: 100px;
+    background-color: #072c00;
+    display: none;
+}

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styleCadastroNovoUser.css">
+    <link rel="icon" type="image/x-icon" href="./assets/assetsIndex/logo.png">
+
+    <title>Cadastro de Novo Usuario</title>
+</head>
+
+<body>
+    <div class="container">
+        <form action="login.html" class="form">
+            <h1 class="text-center">Cadastro de Novo Usuario</h1>
+            <!-- barra de progresso -->
+
+
+            <!-- final da barra de progresso-->
+            <div class="form-step form-step-active">
+                <div class="form-step form-step-active">
+
+                    <div class="input-group">
+                        <label for="Nome_responsavel">NOME <b style="color: red;"
+                                title="Este campo é obrigatório">*</b></label>
+                        <input id="input_nome" autocomplete="off" type="text" name="nome"
+                            placeholder="Responsável pelo cadastro" required="required" min="2" maxlength="50">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="Sobrenome_responsavel">SOBRENOME <b style="color: red;"
+                                title="Este campo é obrigatório">*</b></label>
+                        <input id="input_sobrenome" autocomplete="off" type="text" name="sobrenome"
+                            placeholder="Responsável pelo cadastro" required="required" min="2" maxlength="50">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="Email">EMAIL <b style="color: red;" title="Este campo é obrigatório">*</b></label>
+                        <input id="input_email" autocomplete="off" type="email" name="email"
+                            placeholder="Exemple@exemple.com" required="required" minlength="3" maxlength="50">
+                    </div>
+                    <div class="input-group">
+                        <label for="Senha">SENHA <b style="color: red;" title="Este campo é obrigatório">*</b></label>
+                        <input id="input_senha" autocomplete="off" type="password" name="senha" placeholder="********"
+                            required="required" maxlength="8">
+                    </div>
+                    <div class="input-group">
+                        <label for="Telefone">TELEFONE <b style="color: red;"
+                                title="Este campo é obrigatório">*</b></label>
+                        <input id="input_telefone" autocomplete="off" type="tel" name="tel" placeholder="(01)2345-6789"
+                            required="required" minlength="13" maxlength="13">
+                    </div>
+                    <div class="input-group">
+                        <label for="ac">O usuário é: <b style="color: red;" title="Este campo é obrigatório">*</b></label>
+
+                        <select class="select_ac" name="ac" id="select_tp">
+
+                            <option value="admin">Admin</option>
+                            <option value="funcionario">Colaborador</option>
+
+                        </select>
+                    </div>
+
+                </div>
+
+
+
+                <div class="">
+                    <a onclick="validar()" href="#" class="btn btn-next width-50 ml-auto">Cadastrar</a>
+                </div>
+            </div>
+
+
+
+
+
+        </form>
+
+        <div class="form-image">
+            <div class="image-logo"><a href="./index.html" id="img_logo">
+                    <img src="./assets/assetsCadastro/logoComNome.png" alt="img logo">
+                </a></div>
+            <div class="image-farm">
+                <img src="./assets/assetsCadastro/ImagemCadastro.png" alt="img cadastro">
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
+<script>
+
+    var inputNome = document.querySelector("#input_nome");
+    input_nome.addEventListener("keypress", function (e) {
+        var keyCode = (e.keyCode ? e.keyCode : e.which);
+
+        if ((keyCode < 32) || (keyCode > 32 && keyCode < 65) || (keyCode > 90 && keyCode < 97) || (keyCode > 122 && keyCode < 192) || (keyCode > 383)) {
+            e.preventDefault();
+        }
+    });
+    var inputSobrenome = document.querySelector("#input_sobrenome");
+    input_sobrenome.addEventListener("keypress", function (e) {
+        var keyCode = (e.keyCode ? e.keyCode : e.which);
+
+        if ((keyCode < 32) || (keyCode > 32 && keyCode < 65) || (keyCode > 90 && keyCode < 97) || (keyCode > 122 && keyCode < 192) || (keyCode > 383)) {
+            e.preventDefault();
+        }
+    });
+
+
+
+    $('#input_telefone').mask('(00)00000-0000');
+    $('#input_cnpj').mask('00.000.000/0000-00');
+
+
+
+
+
+    function validar() {
+        var nomeValue = input_nome.value
+        var sobrenomeValue = input_sobrenome.value
+        var emailValue = input_email.value
+        var telefoneValue = input_telefone.value
+        var senhaValue = input_senha.value
+        var tpValue = select_tp.value
+
+        if (tpValue == '' || (nomeValue == '' || nomeValue.length < 2) || (sobrenomeValue == '' || sobrenomeValue.length < 2) || (emailValue == '' || emailValue.length < 5) || telefoneValue == '' || telefoneValue == '' || (senhaValue == '' || senhaValue.length < 3)) {
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Erro',
+                text: 'Algum campo foi preenchido incorretamente!',
+                showConfirmButton: true,
+            })
+            return false
+        } else {
+            cadastrarNovoUser()
+        }
+    }
+
+
+
+    function cadastrarNovoUser() {
+        var NomeVar = input_nome.value;
+        var SobrenomeVar = input_sobrenome.value;
+        var EmailCadastroVar = input_email.value;
+        var SenhaVar = input_senha.value;
+        var TelefoneVar = input_telefone.value;
+        var TipoVar = select_tp.value
+
+        fetch("/usuarios/cadastrarNovoUser", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                NomeServer: NomeVar,
+                SobrenomeServer: SobrenomeVar,
+                EmailCadastroServer: EmailCadastroVar,
+                TelefoneServer: TelefoneVar,
+                SenhaServer: SenhaVar,
+                TipoServer: TipoVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Sucesso!',
+                    text: 'Usuário cadastrado com sucesso!',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+    }
+
+
+
+</script>
