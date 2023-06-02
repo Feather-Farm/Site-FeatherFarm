@@ -16,8 +16,8 @@
     <article id="menuEsquerda">
       <section id="topoMenuEsquerda">
         <img src="../assets/assetsDashboard/logo.png" alt="" />
-        <p id="nomeUsuario" name="nomeUsuario">Sadia</p>
-        <p id="nomeUsuario" name="nomeUsuario">Roberto Justos</p>
+        <p id="nomeUsuario" name="nomeUsuario"><span id="n_usuario"></span></p>
+        <!-- <p id="nomeEmpresa" name="nomeUsuario"></p> -->
         <div>
           <a href="../index.html"><img src="../assets/assetsDashboard/SignOut.png" alt="" /></a>
         </div>
@@ -37,7 +37,7 @@
           <button id="suporte">
             <img src="../assets/assetsDashboard/supIcon.png" id="supIcon" alt="" /> Suporte
           </button>
-          <button onclick="cadastroNewUser()"
+          <button id="btn_cadastro" onclick="cadastroNewUser()"
             style="padding: 20px; background-color: #ff8800; color: white; border-radius: 15px; margin-top: 20px;">Cadastrar
             Novo Usuário</button>
 
@@ -49,11 +49,9 @@
         <h3>Filtrar:</h3>
         <div style="display: flex;
           align-items: center;">
-          <select name="" id="" style="width: fit-content; background-color: transparent;">
-            <option value=""></option>
-            <option value="">Galpão 1</option>
-            <option value="">Galpão 2</option>
-            <option value="">Galpão 3</option>
+          <select name="" id="galpoes_select" style="width: fit-content; background-color: transparent;">
+            <option value="galpao1">Galpão 1</option>
+            <option value="galpao2">Galpão 2</option>
           </select>
           <img src="../assets/assetsDashboard/Filter.png" alt="" />
         </div>
@@ -69,7 +67,7 @@
         <article id="graficoRelatorioGeral">
           <section class="graficoRelatorio">
             <h5 class="laranja">
-              Gráfico em barras de temperatura e umidade - dia 05/05
+              Gráfico em Linhas de temperatura e umidade - dia 06/06
             </h5>
             <div style="position: relative; height: 34vh; width: 34vw; margin-top: 2vh;">
               <canvas id="myChartLine"></canvas>
@@ -192,89 +190,76 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 
+  if (sessionStorage.TIPO_USUARIO == 'funcionario') {
+    var aparecerBtn = document.getElementById('btn_cadastro')
+    aparecerBtn.style.display = 'none'
+  }
+
+  var select = document.getElementById('galpoes_select')
+
+  select.addEventListener('change', function () {
+    alert(select.value)
+  })
+  n_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
   //
   //charts js
-  // const ctxUmidade = document.getElementById("myChartUmidade");
-  // const ctxLine = document.getElementById("myChartLine");
-  // const ctxLineTemp = document.getElementById("myChartLineTemp");
+  const ctxUmidade = document.getElementById("myChartUmidade");
+  const ctxLine = document.getElementById("myChartLine");
+  const ctxLineTemp = document.getElementById("myChartLineTemp");
 
 
-  // new Chart(ctxUmidade, {
-  //   type: "line",
-  //   data: {
-  //     labels: ["dom", "seg", "ter", "qua", "qui", "sex", "sab"],
-  //     datasets: [
+  new Chart(ctxUmidade, {
+    type: "line",
+    data: {
+      labels: ["dom", "seg", "ter", "qua", "qui", "sex", "sab"],
+      datasets: [
 
-  //       {
-  //         label: "Umidade",
-  //         data: [60, 62, 60, 65, 68, 70, 70],
-  //         backgroundColor: "#39842C",
-  //         borderWidth: 1,
-  //       },
-  //     ],
-  //   },
-  //   options: {
-  //     scales: {
-  //       y: {
-  //         beginAtZero: true,
-  //       },
-  //     },
-  //   },
-  // });
+        {
+          label: "Umidade",
+          data: [60, 62, 60, 65, 68, 70, 70],
+          backgroundColor: "#135E06",
+          borderColor: "#3b8a2d",
+          tension: 0.5,
+          borderWidth: 2,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
 
-  // // grafico em linhas começo
-  // new Chart(ctxLine, {
-  //   type: "line",
-  //   data: {
-  //     labels: ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"],
-  //     datasets: [
-  //       {
-  //         label: "Temperatura",
-  //         data: [22, 24, 27, 23, 20, 18,],
-  //         backgroundColor: "#E37F2A",
-  //         borderColor: "#E37F2f",
-  //         borderWidth: 1,
-  //       },
-  //       {
-  //         label: "Umidade",
-  //         data: [90, 89, 93, 87, 88, 82],
-  //         backgroundColor: "#39842C",
-  //         borderColor: "#39842f",
-  //         borderWidth: 1,
-  //       },
-  //     ],
-  //   },
-  //   options: {
-  //     scales: {
-  //       y: {
-  //         beginAtZero: true,
-  //       },
-  //     },
-  //   },
-  // });
 
-  // new Chart(ctxLineTemp, {
-  //   type: "line",
-  //   data: {
-  //     labels: ["dom", "seg", "ter", "qua", "qui", "sex", "sab"],
-  //     datasets: [
-  //       {
-  //         label: "Temperatura",
-  //         data: [22, 22, 23, 23, 24, 22, 20],
-  //         backgroundColor: "#E37F2A",
-  //         borderColor: "#E37F2f",
-  //         borderWidth: 1,
-  //       },
-  //     ],
-  //   },
-  //   options: {
-  //     scales: {
-  //       y: {
-  //         beginAtZero: true,
-  //       },
-  //     },
-  //   },
-  // });
+
+  new Chart(ctxLineTemp, {
+    type: "line",
+    data: {
+      labels: ["dom", "seg", "ter", "qua", "qui", "sex", "sab"],
+      datasets: [
+        {
+          label: "Temperatura",
+          data: [22, 22, 23, 23, 24, 22, 20],
+          backgroundColor: "#E37F2A",
+          borderColor: "#E37F2f",
+          fill: false,
+          borderWidth: 2,
+          tension: 0.5,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
 
   // area de suporte
 
@@ -448,11 +433,8 @@
           resposta.reverse();
 
           plotarGrafico(resposta, idSensor);
-          console.log('aaaaaaaaaaaaaa')
           console.log(resposta)
-          alertar(resposta, idSensor);
           console.log(resposta)
-          console.log("123123")
 
         });
       } else {
@@ -483,7 +465,8 @@
         fill: false,
         backgroundColor: "#39842C",
         borderColor: "#39842C",
-        tension: 0.1
+        borderWidth: 2,
+        tension: 0.6
       },
       {
         label: 'Temperatura',
@@ -491,7 +474,9 @@
         fill: false,
         backgroundColor: "#E37F2A",
         borderColor: "#E37F2f",
-        tension: 0.1
+        tension: 0.5,
+        borderWidth: 2,
+
       }]
     };
 
@@ -577,7 +562,7 @@
           }
 
           // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-          proximaAtualizacao = setTimeout(() => atualizarGrafico(idSensor, dados, myChart), 5000);
+          proximaAtualizacao = setTimeout(() => atualizarGrafico(idSensor, dados, myChart), 15000);
         });
       } else {
         console.error('Nenhum dado encontrado ou erro na API');
@@ -603,7 +588,7 @@
     //     sendData();
     // }, 2000);
 
-    setTimeout(atualizacaoPeriodica, 5000);
+    setTimeout(atualizacaoPeriodica, 15000);
   }
 
   var alertas = [];
@@ -618,7 +603,7 @@
             console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
             console.log(resposta)
             console.log("123123")
-            alertar(resposta, idSensor)
+            // alertar(resposta, idSensor)
           });
         } else {
 
@@ -728,63 +713,7 @@
       })
     }
 
-    //   var card;
 
-    //   if (idSensor == 1) {
-    //     temp_aquario_1.innerHTML = temp + "°C";
-    //     card = card_1
-    //   } else if (idSensor == 2) {
-    //     temp_aquario_2.innerHTML = temp + "°C";
-    //     card = card_2
-    //   } else if (idSensor == 3) {
-    //     temp_aquario_3.innerHTML = temp + "°C";
-    //     card = card_3
-    //   } else if (idSensor == 4) {
-    //     temp_aquario_4.innerHTML = temp + "°C";
-    //     card = card_4
-    //   }
-
-    //   card.className = classe_temperatura;
-    // }
-
-    // function exibirAlerta(temp, idSensor, grauDeAviso, grauDeAvisoCor) {
-    //   var indice = alertas.findIndex(item => item.idSensor == idSensor);
-
-    //   if (indice >= 0) {
-    //     alertas[indice] = { idSensor, temp, grauDeAviso, grauDeAvisoCor }
-    //   } else {
-    //     alertas.push({ idSensor, temp, grauDeAviso, grauDeAvisoCor });
-    //   }
-
-    //   exibirCards();
-
-    //   // Dentro da div com classe grauDeAvisoCor há um caractere "invisível", 
-    //   // que pode ser inserido clicando com o seu teclado em alt+255 ou pelo código adicionado acima.
-    // }
-
-    // function removerAlerta(idSensor) {
-    //   alertas = alertas.filter(item => item.idSensor != idSensor);
-    //   exibirCards();
-    // }
-
-    // function exibirCards() {
-    //   alerta.innerHTML = '';
-
-    //   for (var i = 0; i < alertas.length; i++) {
-    //     var mensagem = alertas[i];
-    //     alerta.innerHTML += transformarEmDiv(mensagem);
-    //   }
-    // }
-
-    // function transformarEmDiv({ idSensor, temp, grauDeAviso, grauDeAvisoCor }) {
-    //   return `<div class="mensagem-alarme">
-    //   <div class="informacao">
-    //   <div class="${grauDeAvisoCor}">&#12644;</div> 
-    //    <h3>Aquário ${idSensor} está em estado de ${grauDeAviso}!</h3>
-    //   <small>Temperatura ${temp}.</small>   
-    //   </div>
-    //   <div class="alarme-sino"></div>
-    //   </div>`;
   }
 
   function cadastroNewUser() {

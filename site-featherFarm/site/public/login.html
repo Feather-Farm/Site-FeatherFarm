@@ -128,6 +128,7 @@
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
                     sessionStorage.TIPO_USUARIO = json.tipo;
+
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
@@ -136,18 +137,12 @@
                         showConfirmButton: false,
                         timer: 2000
                     })
-                    if (json.tipo == "admin") {
-                        setTimeout(function () {
-                            window.location = "./dashboard/indexAdmin.html"
-                        }, 2000);
-                    }
-                    else {
-                        setTimeout(function () {
-                            window.location = "./dashboard/indexFunc.html"
-                        }, 2000);
-                    }
+                    setTimeout(function () {
+                        window.location = "./dashboard/index.html"
+                    }, 2000);
+                }
 
-                });
+                );
 
             } else {
 

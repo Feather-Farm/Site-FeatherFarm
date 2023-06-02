@@ -156,6 +156,9 @@ main{
     margin: 2vh  auto;
 
 }
+#graficos select{
+    outline: none;
+}
 .verde{
     color: #135E06;
 }
