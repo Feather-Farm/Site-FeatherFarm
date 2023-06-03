@@ -17,6 +17,9 @@
       <section id="topoMenuEsquerda">
         <img src="../assets/assetsDashboard/logo.png" alt="" />
         <p id="nomeUsuario" name="nomeUsuario"><span id="n_usuario"></span></p>
+        <br>
+        <p id="nomeUsuario" name="empresa"><span id="n_empresa"></span></p>
+        <br>
         <!-- <p id="nomeEmpresa" name="nomeUsuario"></p> -->
         <div>
           <a href="../index.html"><img src="../assets/assetsDashboard/SignOut.png" alt="" /></a>
@@ -50,17 +53,15 @@
         <div style="display: flex;
           align-items: center;">
           <select name="" id="galpoes_select" style="width: fit-content; background-color: transparent;">
-            <option value="galpao1">Galpão 1</option>
-            <option value="galpao2">Galpão 2</option>
+            <option value="1">Galpão 1</option>
+            <option value="2">Galpão 2</option>
           </select>
           <img src="../assets/assetsDashboard/Filter.png" alt="" />
         </div>
       </div>
       <div id="referencia">
-        <p>Empresa:</p>
-        <p class="verde" id="nomeEmpresa">Sadia -</p>
-        <p>Galpão</p>
-        <p class="verde" id="numGalpao">1</p>
+        <p class="verde"><span id="nome_empresa"><span style="color: black;">Empresa: </span></span></p>
+        <p class="verde"><span id="num_galpao"><span style="color: black;">Galpão: </span>1</span></p>
       </div>
       <section id="areaRelatorio">
         <div class="alerta"></div>
@@ -198,9 +199,11 @@
   var select = document.getElementById('galpoes_select')
 
   select.addEventListener('change', function () {
-    alert(select.value)
+    num_galpao.innerHTML = '<span style="color: black;">Galpão</span>: ' + select.value
   })
   n_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+  n_empresa.innerHTML = sessionStorage.EMPRESA;
+  nome_empresa.innerHTML += sessionStorage.EMPRESA;
 
   //
   //charts js

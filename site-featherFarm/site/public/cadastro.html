@@ -48,11 +48,6 @@
                         required="required" maxlength="18">
                 </div>
 
-                <div class="input-group">
-                    <label for="Senha">SENHA <b style="color: red;" title="Este campo é obrigatório">*</b></label>
-                    <input id="input_senha" autocomplete="off" type="password" name="senha" placeholder="********"
-                        required="required" maxlength="8">
-                </div>
 
                 <div class="">
                     <a onclick="validarEtapa1()" href="#" class="btn btn-next width-50 ml-auto">Proximo</a>
@@ -161,25 +156,25 @@
                 <div class="input-group">
                     <label for="Email">EMAIL <b style="color: red;" title="Este campo é obrigatório">*</b></label>
                     <input id="input_email" autocomplete="off" type="email" name="email"
-                        placeholder="Exemple@exemple.com" required="required" minlength="3" maxlength="50">
-                </div>
-
-                <div class="input-group">
-                    <label for="Email2">EMAIL (2)</label>
-                    <input id="input_email2" autocomplete="off" type="email" name="email2"
-                        placeholder="Exemple@exemple.com" minlength="3" maxlength="50">
+                        placeholder="Email do Administrador" required="required" minlength="3" maxlength="100">
                 </div>
 
                 <div class="input-group">
                     <label for="Telefone">TELEFONE <b style="color: red;" title="Este campo é obrigatório">*</b></label>
-                    <input id="input_telefone" autocomplete="off" type="tel" name="tel" placeholder="(01)2345-6789"
+                    <input id="input_telefone" autocomplete="off" type="tel" name="tel" placeholder="(01)92345-6789"
                         required="required" minlength="13" maxlength="13">
                 </div>
 
                 <div class="input-group">
-                    <label for="Telefone2">TELEFONE (2)</label>
-                    <input id="input_telefone2" autocomplete="off" type="tel" name="tel2" placeholder="(01)2345-6789"
-                        minlength="13" maxlength="13">
+                    <label for="Telefone">TELEFONE (2)</label>
+                    <input id="input_telefone2" autocomplete="off" type="tel" name="tel2" placeholder="(01)92345-6789"
+                        minlength="3" maxlength="100">
+                </div>
+
+                <div class="input-group">
+                    <label for="Senha">SENHA <b style="color: red;" title="Este campo é obrigatório">*</b></label>
+                    <input id="input_senha" autocomplete="off" type="password" name="senha" placeholder="********"
+                        required="required" maxlength="8">
                 </div>
 
                 <div class="btns-group">
@@ -226,7 +221,7 @@
 
 
     $('#input_telefone').mask('(00)00000-0000');
-    $('#input_telefone').mask('(00)00000-0000');
+    $('#input_telefone2').mask('(00)00000-0000');
     $('#input_cep').mask('00000-000');
     $('#input_cnpj').mask('00.000.000/0000-00');
     // ---------- barra de progresso ----------
@@ -246,9 +241,8 @@
         var empresaValue = input_razao_social.value
         var nome_fantasiaValue = input_nome_fantasia.value
         var cnpj_empresaValue = input_cnpj.value
-        var senhaValue = input_senha.value
 
-        if ((empresaValue == '' || empresaValue.length < 2) || (nome_fantasiaValue == '' || nome_fantasiaValue.length < 2) || (cnpj_empresaValue == '' || cnpj_empresaValue.length < 14) || (senhaValue == '' || senhaValue.length < 3)) {
+        if ((empresaValue == '' || empresaValue.length < 2) || (nome_fantasiaValue == '' || nome_fantasiaValue.length < 2) || (cnpj_empresaValue == '' || cnpj_empresaValue.length < 14)) {
             Swal.fire({
                 position: 'center',
                 icon: 'error',
@@ -334,11 +328,11 @@
     // Quando a validação for efetuada corretamente, cai no else e soma 1 na variável do numero da etapa
     function validar4() {
         var emailValue = input_email.value
-        var email2Value = input_email2.value
         var telefoneValue = input_telefone.value
         var telefone2Value = input_telefone2.value
+        var senhaValue = input_senha.value
 
-        if (emailValue == '' || telefoneValue == '') {
+        if (emailValue == '' || emailValue.indexOf('@') == -1 || emailValue.indexOf('.') == -1 || telefoneValue == '' || senhaValue == '' || senhaValue.length <= 3) {
             Swal.fire({
                 position: 'center',
                 icon: 'error',
@@ -352,10 +346,15 @@
 
     function validarEtapa4() {
         validar4();
-        AvancarEtapas();
-        AvancarBarraDeProgresso();
-        cadastrar();
-        cadastrarAdmin();
+        if (validar4() == false) {
+            return false
+        }
+        else {
+            AvancarEtapas();
+            AvancarBarraDeProgresso();
+            cadastrar();
+            cadastrarAdmin();
+        }
     }
 
 
@@ -440,7 +439,13 @@
                 }, "2000")
 
             } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Erro!',
+                    text: 'Erro no cadastro!',
+                    showConfirmButton: true
+                })
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
@@ -453,10 +458,10 @@
         var NomeVar = input_nome.value;
         var SobrenomeVar = input_sobrenome.value;
         var EmailCadastroVar = input_email.value;
-        var Email2CadastroVar = input_email2.value;
         var TelefoneVar = input_telefone.value;
         var Telefone2Var = input_telefone2.value;
         var SenhaVar = input_senha.value;
+        var CnpjVar = input_cnpj.value;
 
         fetch("/usuarios/cadastrar", {
             method: "POST",
@@ -469,10 +474,10 @@
                 NomeServer: NomeVar,
                 SobrenomeServer: SobrenomeVar,
                 EmailCadastroServer: EmailCadastroVar,
-                Email2CadastroServer: Email2CadastroVar,
                 TelefoneServer: TelefoneVar,
                 Telefone2Server: Telefone2Var,
                 SenhaServer: SenhaVar,
+                CnpjServer: CnpjVar,
             })
         }).then(function (resposta) {
 

@@ -17,4 +17,5 @@ router.post("/cadastrarNovoUser", function (req, res) {
 });
 
 
+
 module.exports = router;

@@ -153,7 +153,8 @@
         var EmailCadastroVar = input_email.value;
         var SenhaVar = input_senha.value;
         var TelefoneVar = input_telefone.value;
-        var TipoVar = select_tp.value
+        var TipoVar = select_tp.value;
+        var EmpresaVar = sessionStorage.FK_EMPRESA;
 
         fetch("/usuarios/cadastrarNovoUser", {
             method: "POST",
@@ -168,7 +169,8 @@
                 EmailCadastroServer: EmailCadastroVar,
                 TelefoneServer: TelefoneVar,
                 SenhaServer: SenhaVar,
-                TipoServer: TipoVar
+                TipoServer: TipoVar,
+                EmpresaServer: EmpresaVar,
             })
         }).then(function (resposta) {
 

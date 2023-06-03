@@ -148,7 +148,7 @@ main{
     height: 6vh;
 }
 #graficos #referencia{
-    width: 30%;
+    width: fit-content;
     position: relative;
     /* background-color: #5BB54C; */
     display: flex ;
@@ -161,6 +161,7 @@ main{
 }
 .verde{
     color: #135E06;
+    margin: 0px 50px;
 }
 .laranja{
     color: #FF7500;

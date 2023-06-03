@@ -5,7 +5,7 @@ CREATE TABLE empresa(
 	idEmpresa INT PRIMARY KEY auto_increment,
     razaoSocial VARCHAR(100) NOT NULL,
 	nomeFantasia VARCHAR(100) NOT NULL,
-    cnpj CHAR(18) NOT NULL,
+    cnpj CHAR(18) NOT NULL UNIQUE,
     cep CHAR(9) NOT NULL,
     logradouro VARCHAR(100) NOT NULL,
     numero CHAR(14) NOT NULL,
@@ -20,11 +20,12 @@ CREATE TABLE usuario(
     nome VARCHAR(50),
 	sobrenome VARCHAR(60),
 	email VARCHAR(100),
-	email2 VARCHAR(100),
     telefone VARCHAR(15),
     telefone2 VARCHAR(15),
     senha VARCHAR(30),
     tipo VARCHAR(11),
+    fkEmpresa int,
+    foreign key (fkEmpresa) references empresa (idEmpresa),
     CONSTRAINT chkTipo CHECK (tipo IN('admin', 'funcionário'))
 );
 
@@ -54,6 +55,19 @@ create table medida(
     fksensor INT,
     FOREIGN KEY (fksensor) REFERENCES sensor (idSensor)
 );
+
+DELIMITER $$
+CREATE FUNCTION fn_empresa(fnCnpj char(18)) 
+RETURNS int
+deterministic
+BEGIN
+	DECLARE vId int;
+    
+    set vId = (select idEmpresa from empresa where cnpj = fnCnpj);
+    
+    return(vId);
+END$$;
+DELIMITER ;
 
 
 

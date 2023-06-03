@@ -4,7 +4,6 @@ var usuarioModel = require("../models/usuarioModel");
 function entrar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    var tipo = req.body.tipoServer
 
     usuarioModel.entrar(email, senha)
         .then(
@@ -36,14 +35,15 @@ function cadastrar(req, res) {
     var Nome = req.body.NomeServer;
     var Sobrenome = req.body.SobrenomeServer;
     var EmailCadastro = req.body.EmailCadastroServer;
-    var Email2Cadastro = req.body.Email2CadastroServer;
     var Telefone = req.body.TelefoneServer;
     var Telefone2 = req.body.Telefone2Server;
     var Senha = req.body.SenhaServer;
+    var Cnpj = req.body.CnpjServer;
+
 
 
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-    usuarioModel.cadastrar(Nome, Sobrenome, EmailCadastro, Email2Cadastro, Telefone, Telefone2, Senha)
+    usuarioModel.cadastrar(Nome, Sobrenome, EmailCadastro, Telefone, Telefone2, Senha, Cnpj)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -69,10 +69,11 @@ function cadastrarNovoUser(req, res) {
     var Telefone = req.body.TelefoneServer;
     var Senha = req.body.SenhaServer;
     var Tipo = req.body.TipoServer;
+    var Empresa = req.body.EmpresaServer
 
 
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-    usuarioModel.cadastrarNovoUser(Nome, Sobrenome, EmailCadastro, Telefone, Senha, Tipo)
+    usuarioModel.cadastrarNovoUser(Nome, Sobrenome, EmailCadastro, Telefone, Senha, Tipo, Empresa)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -89,8 +90,9 @@ function cadastrarNovoUser(req, res) {
         );
 }
 
+
 module.exports = {
     entrar,
     cadastrar,
-    cadastrarNovoUser
+    cadastrarNovoUser,
 }
