@@ -40,8 +40,7 @@
           <button id="suporte">
             <img src="../assets/assetsDashboard/supIcon.png" id="supIcon" alt="" /> Suporte
           </button>
-          <button id="btn_cadastro" onclick="cadastroNewUser()"
-            style="padding: 20px; background-color: #ff8800; color: white; border-radius: 15px; margin-top: 20px;">Cadastrar
+          <button id="btnCadastro" onclick="cadastroNewUser()" >Cadastrar
             Novo Usuário</button>
 
         </ul>
@@ -133,42 +132,55 @@
 
             <div class="faq-container">
               <div class="question"> <!-- Pergunta 1 -->
-                <h2>Como faço para criar uma página HTML?</h2>
+                <h2>Esqueci minha senha
+                </h2>
                 <div class="answer">
-                  <p>Para criar uma página HTML, você precisa criar um arquivo com a extensão .html e escrever o código
-                    HTML nele.</p>
+                  <p>Primeiro clique em "esqueci minha senha"; <br>
+                    Digite sue email, enviaremos as instruções ao seu e-mail;<br>
+                    ° Localize o e-mail recebido em sua caixa de entrada;<br>
+                    ° Digite o código recebido na tela de redefinição de senha;<br>
+                    ° Digite sua nova senha, confirme-a, e cadastre-a</p>
                 </div>
               </div>
 
               <div class="question"> <!-- Pergunta 2 -->
-                <h2>O que é CSS?</h2>
+                <h2>Dashboard não contém informações.
+                </h2>
                 <div class="answer">
-                  <p>CSS (Cascading Style Sheets) é uma linguagem de estilo usada para descrever a aparência e
-                    formatação de um documento HTML.</p>
+                  <p>- Reinice a página. <br>
+                    - Se o problema persistir faça o logout do site em seguida faça o login novamente<br>                    
+                    - Verifique se o arduino está ligado na porta USB. <br>                    
+                    - Entre em contato conosco: (11) 9-8712 1244, ou pelo e-mail (featherfarmsuporte@gmail.com)</p>
                 </div>
               </div>
 
               <div class="question"> <!-- Pergunta 3 -->
-                <h2>O que é EJS?</h2>
+                <h2>Como posso atualizar minhas informações de contato no sistema?
+                </h2>
                 <div class="answer">
-                  <p>EJS (Embedded JavaScript) é uma linguagem de modelagem que permite inserir código JavaScript em
-                    páginas HTML.</p>
+                  <p>- Faça login na sua conta utilizando suas credenciais de acesso.
+                    - Abra as configurações<br>
+                    - Procure pela opção 'Informações de Contato',e clique para abrir essa área<br>
+                    - Agora, você pode editar os campos cadastrados<br>
+                    - Após fazer as alterações desejadas, certifique-se de salvar as modificações clicando no botão 'Atualizar'.</p>
                 </div>
               </div>
 
               <div class="question"> <!-- Pergunta 4 -->
-                <h2>Como posso aplicar estilos CSS em um elemento HTML?</h2>
+                <h2>O sistema está apresentando erros ou mensagens de falha. Como posso solucionar esses problemas?</h2>
                 <div class="answer">
-                  <p>Você pode aplicar estilos CSS em um elemento HTML usando seletores CSS e definindo propriedades de
-                    estilo, como cor, tamanho da fonte, margens, etc.</p>
+                  <p>- Limpe o cache e os cookies; <br>
+                    - Atualize o sistema e os navegadores;<br>
+                    - Entre em contato com nossa equipe de suporte: Se o problema persistir mesmo após seguir as etapas acima, entre em contato com nossa equipe de suporte técnico.</p>
                 </div>
               </div>
 
               <div class="question"> <!-- Pergunta 5 -->
-                <h2>Como passar dados para um arquivo EJS?</h2>
+                <h2>As luzes do meu sensor apagaram.
+                </h2>
                 <div class="answer">
-                  <p>Você pode passar dados para um arquivo EJS usando variáveis no lado do servidor e incorporando
-                    essas variáveis no código EJS.</p>
+                  <p>Se o equipamento estiver ligado diretamente no computador e está com todas as luzes apagadas, desligue-o do computador e reconecte novamente; <br>
+                    Em caso de persistência entre em contato com um dos nossos agentes online.</p>
                 </div>
               </div>
             </div>
@@ -179,8 +191,29 @@
             <h2 class="laranja">Fale Conosco!</h2>
 
             <div>
-              <button onclick="window.location.href = '#' ">Entrar em contato</button>
+              <a href="https:/featherfarmteste-help.freshdesk.com/support/home" target="_blank">
+                <button >Entrar em contato</button>
+              </a>
+              <p style="text-align: center; margin: 5px auto;">OU</p>
             </div>
+
+            <!-- area de feecbak -->
+
+            <script type="text/javascript" src="https://s3.amazonaws.com/assets.freshdesk.com/widget/freshwidget.js"></script>
+            <style type="text/css" media="screen, projection">
+              @import url(https://s3.amazonaws.com/assets.freshdesk.com/widget/freshwidget.css); 
+            </style> 
+            <iframe title="Feedback Form" class="freshwidget-embedded-form" id="freshwidget-embedded-form" src="https://featherfarmteste-help.freshdesk.com/widgets/feedback_widget/new?&widgetType=embedded" scrolling="no" height="300px" width="60%" frameborder="0" style="margin-left: 20%; background-color: #fffbea; " >
+            </iframe>
+
+            <!-- area de suporte -->
+            <script>
+              window.fwSettings={
+              'widget_id':151000003735
+              };
+              !function(){if("function"!=typeof window.FreshworksWidget){var n=function(){n.q.push(arguments)};n.q=[],window.FreshworksWidget=n}}() 
+            </script>
+            <script type='text/javascript' src='https://widget.freshworks.com/widgets/151000003735.js' async defer></script>
           </article>
 
         </article>
@@ -356,12 +389,21 @@
   // area do faq
   const questions = document.querySelectorAll('.question');
 
-  questions.forEach(question => {
-    question.addEventListener('click', () => {
-      question.querySelector('.answer').classList.toggle('show');
+questions.forEach(question => {
+  question.addEventListener('click', () => {
+    const answer = question.querySelector('.answer');
+    const allAnswers = document.querySelectorAll('.answer');
+
+    allAnswers.forEach(ans => {
+      if (ans !== answer) {
+        ans.classList.remove('show');
+      }
     });
+
+    answer.classList.toggle('show');
   });
-  //
+});
+
 
   // graficos em chart js
 

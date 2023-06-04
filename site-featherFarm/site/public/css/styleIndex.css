@@ -420,7 +420,7 @@ input[type='Submit']:hover {
 .footer {
     background-color: #e9cd53;
     width: 100%;
-    height: 270px;
+    height: 330px;
 }
 
 .footer .principal {
@@ -443,7 +443,26 @@ input[type='Submit']:hover {
     line-height: 30px;
     text-align: center;
 }
-
+#suporte{
+    /* background-color: #212124; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: auto;
+    font-family: 'Poppins';
+    line-height: 30px;
+    text-align: center;
+    margin: auto;
+}
+#suporte img{
+    width: 60px;
+    height: 60px;
+}
+#suporte a{
+    text-decoration: none;
+    color: #070707;
+}
 .footer .divisor {
     background-color: #E37F2A;
     height: 3px;
