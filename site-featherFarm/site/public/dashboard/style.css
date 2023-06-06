@@ -15,7 +15,9 @@ main{
     /* background-color: aqua; */
     background-image: url(../assets/assetsDashboard/fundoDash.svg);
     background-repeat: no-repeat;
-    background-position: 30vh 33vw;
+    background-position: 30vh 30vw;
+    background-size: 100%;
+
 }
 
 #menuEsquerda{
@@ -135,6 +137,7 @@ main{
     /* align-items:center; */
     /* flex-direction: column; */
     padding: 2%;
+    padding-top: 1%;
     position: absolute;
     left: 18vw;
 
@@ -161,21 +164,32 @@ main{
     height: 6vh;
 }
 #graficos #referencia{
-    width: fit-content;
+    width: 100%;
     position: relative;
     /* background-color: #5BB54C; */
     display: flex ;
-    justify-content: space-around;
+    justify-content: center;
     margin: 2vh  auto;
 
 }
-
+#graficos #referencia p{
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
+#openModalButton{
+    padding:10%;
+    border: 1px solid #072c00;
+    border-radius: 40%;
+    background-color: transparent;
+    font-size: 22px;
+}
 #graficos select{
     outline: none;
 }
 .verde{
     color: #135E06;
-    margin: 0px 50px;
+    /* margin: 0px 50px; */
 }
 .laranja{
     color: #FF7500;
@@ -193,8 +207,8 @@ main{
     align-items: center;
 }
 #graficos #areaRelatorio .graficoRelatorio{
-    width: 39vw;
-    height: 40vh;
+    width: 45vw;
+    height: 45vh;
     padding: 2% 3%;
     background-color: #fffff5;
     /* border: #FF7500 1px solid; */
@@ -217,12 +231,16 @@ main{
     /* border: #135E06 1px solid; */
     box-shadow: #3b2700 -10px 7px 10px;
     rotate:(10deg);
-    border-radius: 105px;
-    padding: 4%;
+    border-radius: 55px;
+    padding:  4% ;
     display: flex;
     align-items: center;
     justify-content: space-around   ;
     flex-direction: column;
+}
+#graficos #areaRelatorio #graficoRelatorioGeral #picos p{
+    width: fit-content  ;
+    margin: auto;
 }
 #graficos #areaRelatorio #graficoRelatorioGeral #picos h4{
     display: flex;
@@ -266,9 +284,11 @@ main{
 }
 #graficos #areaTemperatura #graficoTemperatura{
     width: 100%;
+    min-height: 80vh;
     height: auto;
     display: flex;
     justify-content: space-around;
+    /* background-color: #135E06; */
 
 }
 #graficos #areaTemperatura #graficoTemperatura div:last-child{
@@ -282,7 +302,7 @@ main{
 #graficos #areaTemperatura #graficoTemperatura #tempIndicador{
     background-color: #f1ffe1ec;
     /* border: #E37F2A solid 1px; */
-    box-shadow: #3b2700 -10px 7px 10px;
+    box-shadow: #3b2700c4 -7px -5px 2px;
     border-radius: 15px;
     padding: 5%;
     padding-left: 0;
@@ -310,7 +330,7 @@ main{
     background-color: #f1ffe1c7;
     padding: 4%;
     /* border: 1px solid #E37F2A; */
-    box-shadow: #3b2700 -10px 7px 25px;
+    box-shadow: #3b2700d5 9px 7px 2px;
 
     border-radius: 15px;
 }
@@ -342,7 +362,7 @@ main{
 #graficos #areaUmidade #graficoUmidade #umidadeIndicador{
     background-color: #ffffffd0;
     /* border: #E37F2A solid 1px; */
-    box-shadow: #072c00 10px 7px 10px;
+    box-shadow: #072c009f 7px 7px 2px;
 
     border-radius: 15px;
     padding: 5%;
@@ -372,7 +392,7 @@ main{
     background-color: #ffffffd0;
     padding: 4%;
     /* border: 1px solid #E37F2A; */
-    box-shadow: #072c00 -10px 7px 10px;
+    box-shadow: #072c00a6 10px 7px 3px;
     border-radius: 15px;
 }
 
@@ -391,7 +411,9 @@ main{
   }
 
   /* area de suporte */
-
+  #areaSuporte h2{
+    text-align: center;
+  }
   #areaSuporte .faq-container {
     width: 90%;
 
@@ -415,8 +437,9 @@ main{
     display: none;
   }
   #areaSuporte .answer p{
-    font-size: 15px;
+    font-size: 17px;
     color: #252525;
+    line-height: 30px;
   }
   
   #areaSuporte .answer.show {
@@ -428,10 +451,13 @@ main{
     font-size: 30px;
     font-weight: 500;
   }
+  #areaSuporte #conteudoSuporte{
+    margin: 4vh;
+  }
   #areaSuporte #conteudoSuporte #esquerdaSuporte{
     /* background-color: #697467;  */
     width: 60%;
-    margin: 3vh auto;
+    margin: 1vh auto;
   }
   #areaSuporte #conteudoSuporte #esquerdaSuporte #duvidas{
     font-weight: 500;
@@ -439,7 +465,7 @@ main{
     margin: 1vh auto;
 }
 #areaSuporte .question h2{
-    font-size: 18px;
+    font-size: 19px;
     color: #E37F2A;
     text-align: left;
     font-weight: 500;
@@ -462,14 +488,14 @@ main{
     font-weight: 300;
     text-align: center;
     font-size: 19px;
-    margin: 3vh auto;
+    margin: 1vh auto;
 }
 #areaSuporte #contato div{
     width: 50%;
     margin: auto;
     /* background-color: #135E06; */
 }
-#areaSuporte #contato div a button{
+/* #areaSuporte #contato div a button{
     width: 100% !important;
     height: 3rem !important;
     border: #072c00 solid 2px !important;
@@ -489,7 +515,7 @@ main{
     color: #fafafa;
 
 
-  }
+  } */
 
 .alerta{
     width: 100px;
@@ -497,3 +523,68 @@ main{
     background-color: #072c00;
     display: none;
 }
+
+/* modal */
+
+
+.modal {
+    display: none;
+    /* position: center center; */
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 110vh;
+    overflow: auto;
+    background-color: rgba(39, 39, 39, 0.116);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -13vh;
+    margin-left: -10vw;
+    backdrop-filter: blur(8px); /* Adicione o filtro de desfoque */
+
+  }
+  .modal-content {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    background-color: #fffbea;
+    /* background-color: #fefefe; */
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 15px;
+    width: 70%;
+    
+  }
+  .modal::before {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px); /* Adicione o filtro de desfoque */
+  }
+  .modal-content div {
+    width: 90%; 
+    height: auto; 
+    margin: auto;
+  }
+  
+  .modal-content img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    border: #3a0808 1px solid; 
+    border-radius: 15px;
+  }
+  
+  
+  /* Estilo para ocultar o botão do modal quando o modal estiver aberto */
+  .modal-open {
+    display: none;
+  }

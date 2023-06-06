@@ -8,7 +8,7 @@
     <link
       rel="icon"
       type="image/x-icon"
-      href="./assets/assetsIndex/logo.png"
+      href="../public/assets/assetsIndex/logo.png"
     />
     <title>FF-SimuladorFinanceiro</title>
   </head>
@@ -17,7 +17,7 @@
         <div class="logo">
           <div class="imagem">
             <img
-              src="./assets/assetsIndex/logo.png"
+              src="../public/assets/assetsIndex/logo.png"
               style="
                 margin-right: -100px;
                 height: 120px;
@@ -109,19 +109,19 @@
     if (valor <= 0 || qtd_aves <= 0 || qtd_galpao <= 0) {
       alert("Valores invalidos inseridos!");
     } else {
-      exibir_infos.innerHTML += `<h1><img style="margin-right:1vw;" width="50px" src="imgs/dollar.svg" alt="">
+      exibir_infos.innerHTML += `<h1><img style="margin-right:1vw;" width="50px" src="../public/assets/assetsSimulador/dollar.svg" alt="">
         O seu valor atual investido em aves é de R$${total.toFixed(2)}</h1> <br>`;
 
       exibir_infos.innerHTML += `<h2> Vamos simular o prejuizo que você pode ter! </h2><br>`;
 
-      exibir_infos.innerHTML += `<span id="spam1"><img width="75px" src="imgs/frangoVermelho.svg" alt="">
+      exibir_infos.innerHTML += `<span id="spam1"><img width="75px" src="../public/assets/assetsSimulador/frangoVermelho.svg" alt="">
         Com o prejuizo de 20%, sua perda será de : R$${economia.toFixed(2)} </span> <br>`;
 
-      exibir_infos.innerHTML += `<span id="spam2"><img width="50px" src="imgs/frangoAmarelo.svg" alt="">
+      exibir_infos.innerHTML += `<span id="spam2"><img width="50px" src="../public/assets/assetsSimulador/frangoAmarelo.svg" alt="">
         Com o prejuizo de 10%, sua perda será de : R$${(
         (total * 10) /100).toFixed(2)}  </span><br>`;
 
-      exibir_infos.innerHTML += `<span id="spam3"><img width="50px" src="imgs/frangoVerde.svg" alt="">
+      exibir_infos.innerHTML += `<span id="spam3"><img width="50px" src="../public/assets/assetsSimulador/frangoVerde.svg" alt="">
         Com o prejuizo de 5%, sua perda será de : R$${((total * 5) /100).toFixed(2)} </span><br>`;
 
       exibir_infos.innerHTML += `<span id="spam4"><h2> Você precisará de ${(area / 12).toFixed(0)} sensores por galpão<br /> totalizando um investimento de R$${valor_sensor.toFixed(2)}<h2></span> <br>`;

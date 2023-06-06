@@ -48,9 +48,15 @@
     </article>
     <article id="graficos">
       <div id="referencia">
-        <p class="verde"><span id="nome_empresa"><span style="color: black;">Empresa: </span></span></p>
-        <br><br>
-        <br><br>
+        <span style="width: 5vw;"><button id="openModalButton"> ? </button></span>
+
+        <p class="verde" ><span id="nome_empresa"><span style="color: black;">Empresa: </span></span></p>
+
+      </div>
+      <div id="avatarModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div><img src="../assets/assetsDashboard/quartil.png" alt=""></div>            
+        </div>
       </div>
       <section id="areaRelatorio">
         <div class="alerta"></div>
@@ -59,18 +65,18 @@
             <h5 class="laranja">
               Gráfico em Linhas de temperatura e umidade - dia 06/06
             </h5>
-            <div style="position: relative; height: 34vh; width: 34vw; margin-top: 2vh;">
+            <div style="position: relative; height: 40vh; width: 40vw; margin-top: 2vh;">
               <canvas id="myChartLine"></canvas>
             </div>
           </section>
           <!-- <section id="picos">
             <h4>
-              Pico de temperatura:
-              <p class="verde" id="picoTemperatura">15:00h</p>
+              Mediana de temperatura:
+              <p class="verde" id="picoTemperatura">21.4°C</p>
             </h4>
             <h4>
-              Pico de Umidade:
-              <p class="verde" id="picoUmidade">17:00h</p>
+              Mediana de Umidade:
+              <p class="verde" id="picoUmidade">64%</p>
             </h4>
           </section> -->
         </article>
@@ -113,12 +119,12 @@
       </section>
 
       <section id="areaSuporte" style="display: none">
-        <h1>Precisa de <span class="laranja">Ajuda?</span></h1>
+        <h2 style="margin-top: 2vh;">Precisa de <span class="laranja">Ajuda?</span></h2>
 
         <article id="conteudoSuporte">
 
           <article id="esquerdaSuporte">
-            <h2 id="duvidas">Dúvidas <span class="verde">frequentes</span></h2>
+            <h2 id="duvidas">Dúvidas <span class="verde">Frequentes</span> </h2>
 
             <div class="faq-container">
               <div class="question"> <!-- Pergunta 1 -->
@@ -145,7 +151,7 @@
               </div>
 
               <div class="question"> <!-- Pergunta 3 -->
-                <h2>Como posso atualizar minhas informações de contato no sistema?
+                <h2>Como atualizo minhas informações de contato no sistema?
                 </h2>
                 <div class="answer">
                   <p>- Faça login na sua conta utilizando suas credenciais de acesso.
@@ -180,12 +186,12 @@
             <h1>Ainda não solucionou sua dúvida?</h1>
             <h2 class="laranja">Fale Conosco!</h2>
 
-            <div>
+            <!-- <div>
               <a href="https:/featherfarmteste-help.freshdesk.com/support/home" target="_blank">
                 <button >Entrar em contato</button>
               </a>
               <p style="text-align: center; margin: 5px auto;">OU</p>
-            </div>
+            </div> -->
 
             <!-- area de feecbak -->
 
@@ -193,7 +199,7 @@
             <style type="text/css" media="screen, projection">
               @import url(https://s3.amazonaws.com/assets.freshdesk.com/widget/freshwidget.css); 
             </style> 
-            <iframe title="Feedback Form" class="freshwidget-embedded-form" id="freshwidget-embedded-form" src="https://featherfarmteste-help.freshdesk.com/widgets/feedback_widget/new?&widgetType=embedded" scrolling="no" height="300px" width="60%" frameborder="0" style="margin-left: 20%; background-color: #fffbea; " >
+            <iframe title="Feedback Form" class="freshwidget-embedded-form" id="freshwidget-embedded-form" src="https://featherfarmteste-help.freshdesk.com/widgets/feedback_widget/new?&widgetType=embedded" scrolling="no" height="450px" width="70%" frameborder="0" style="margin-left: 13%; background-color: #fffbea; border: solid #E37F2A 1px; padding: 1% 3%; border-radius: 10px;" >
             </iframe>
 
             <!-- area de suporte -->
@@ -282,7 +288,42 @@
     },
   });
 
-  // area de suporte
+  // modal
+
+  
+const openModalButton = document.getElementById('openModalButton');
+const modal = document.getElementById('avatarModal');
+
+// Evento de clique para abrir o modal
+openModalButton.addEventListener('click', function() {
+  modal.style.display = 'block';
+});
+
+// Evento de clique fora do modal para fechá-lo
+window.addEventListener('click', function(event) {
+  if (event.target == modal) {
+    modal.style.display = 'none';
+  }
+});
+
+const userIconImage = document.querySelector('header img');
+
+// Referências às imagens dentro do modal
+const modalImages = document.querySelectorAll('.modal-content img');
+
+// Função para trocar a imagem do userIcon.svg
+function trocarImagem(e) {
+  const selectedImageSrc = e.target.getAttribute('src');
+  userIconImage.setAttribute('src', selectedImageSrc);
+  modal.style.display = "none";
+
+}
+
+// Adicionando o evento de clique às imagens no modal
+modalImages.forEach(function(image) {
+  image.addEventListener('click', trocarImagem);
+
+});
 
 
 
@@ -308,9 +349,9 @@
     areaTemperatura.style.display = "none";
     areaUmidade.style.display = "none";
     areaSuporte.style.display = "none";
-    filtro.style.zIndex = '10';
+    // filtro.style.zIndex = '10';
     referencia.style.zIndex = '10';
-    filtro.style.position = 'relative';
+    // filtro.style.position = 'relative';
     referencia.style.position = 'relative';
 
     areaTemperatura.classList.remove("fade");
@@ -324,9 +365,9 @@
     areaTemperatura.style.display = "block";
     areaUmidade.style.display = "none";
     areaSuporte.style.display = "none";
-    filtro.style.zIndex = '10';
+    // filtro.style.zIndex = '10';
     referencia.style.zIndex = '10';
-    filtro.style.position = 'relative';
+    // filtro.style.position = 'relative';
     referencia.style.position = 'relative';
 
     areaRelatorio.classList.remove("fade");
@@ -340,9 +381,9 @@
     areaTemperatura.style.display = "none";
     areaSuporte.style.display = "none";
     areaUmidade.style.display = "block";
-    filtro.style.zIndex = '10';
+    // filtro.style.zIndex = '10';
     referencia.style.zIndex = '10';
-    filtro.style.position = 'relative';
+    // filtro.style.position = 'relative';
     referencia.style.position = 'relative';
 
     areaRelatorio.classList.remove("fade");
@@ -360,9 +401,9 @@
     areaTemperatura.style.display = "none";
     areaUmidade.style.display = "none";
     areaSuporte.style.display = "block";
-    filtro.style.zIndex = '-10';
+    // filtro.style.zIndex = '-10';
     referencia.style.zIndex = '-10';
-    filtro.style.position = 'absolute';
+    // filtro.style.position = 'absolute';
     referencia.style.position = 'absolute';
 
     areaRelatorio.classList.remove("fade");
