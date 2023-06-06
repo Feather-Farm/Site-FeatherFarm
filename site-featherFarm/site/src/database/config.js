@@ -21,8 +21,8 @@ var sqlServerConfig = {
 var mySqlConfig = {
     host: "localhost",
     database: "featherFarm",
-    user: "admin",
-    password: "1234",
+    user: "root",
+    password: "root",
 };
 
 function executar(instrucao) {

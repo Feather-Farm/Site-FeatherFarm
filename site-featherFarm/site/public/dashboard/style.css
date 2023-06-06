@@ -220,6 +220,7 @@ main{
     align-items: center;
     border-radius: 15px;
     margin-bottom: 2%;
+    margin-top: 6%;
 }
 #graficos #areaRelatorio #graficoRelatorio1 h4{
     font-weight: 550;
@@ -530,7 +531,7 @@ main{
 .modal {
     display: none;
     /* position: center center; */
-    z-index: 1;
+    z-index: 999;
     left: 0;
     top: 0;
     width: 100vw;
@@ -556,6 +557,7 @@ main{
     border: 1px solid #888;
     border-radius: 15px;
     width: 70%;
+    z-index: 999;
     
   }
   .modal::before {
@@ -581,6 +583,7 @@ main{
     object-fit: cover; 
     border: #3a0808 1px solid; 
     border-radius: 15px;
+    z-index: 999;
   }
   
   
@@ -588,3 +591,42 @@ main{
   .modal-open {
     display: none;
   }
+  .alertaUmidade{
+    position: absolute;
+    right: 0;
+    top: 2px;
+    height: 110px;
+    width: 350px;
+    border: 1px solid #719e6a;
+    z-index: 9;
+    border-radius: 15px;
+    background-color: #a0d497;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 2px;
+
+  }
+  .alertaTemp{
+    position: absolute;
+    right: 0;
+    top: 140px;
+    height: 110px;
+    width: 350px;
+    border: 1px solid #b3a054;
+    z-index: 9;
+    border-radius: 15px;
+    background-color: #FFE581;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 2px;
+}
+
+    #textoUmidade{
+        width: 60%;
+        font-size: 0.9em;
+    }
+
+    #textoTemp{
+        width: 60%;
+        font-size: 0.9em;
+    }
