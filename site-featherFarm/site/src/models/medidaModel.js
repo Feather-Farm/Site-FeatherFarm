@@ -20,7 +20,7 @@ function buscarUltimasMedidas(fkSensor, limite_linhas) {
                         data_hora,
                         DATE_FORMAT(data_hora,'%H:%i:%s') as momento_grafico
                     from medida
-                    where fkSensor = 1 order by data_hora desc limit 5`;
+                    where fkSensor = 1 order by data_hora desc limit 7`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
